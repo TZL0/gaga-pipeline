@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FiBox, FiImage, FiUpload } from 'react-icons/fi';
+import { FiBox, FiImage, FiMail, FiUpload } from 'react-icons/fi';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
@@ -609,13 +609,13 @@ function App() {
                   onClick={() => setIsEmailUploadPopUpActive(true)}
                   disabled={loading || loading3D}
                 >
-                  Remote Upload <FiUpload/>
+                  <FiMail/>
                 </Button>
                 <Button
                   onClick={() => fileInputRef.current?.click()}
                   disabled={loading || loading3D}
                 >
-                  Upload <FiUpload/>
+                  <FiUpload/>
                 </Button>
                 <Button
                   onClick={() => setIsImageGenerationPopUpActive(true)}
@@ -660,7 +660,7 @@ function App() {
               <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.5rem',
@@ -668,30 +668,9 @@ function App() {
               >
                 <Button
                   onClick={() => setIsModelGenerationPopUpActive(true)}
-                  style={{
-                    position: 'relative',
-                  }}
-                  disabled={!imageUrl || loading || loading3D}
+                  disabled={loading || loading3D}
                 >
                   Generate <FiBox/>
-
-                  {!imageUrl && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: '-0.8rem',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        background: 'transparent',
-                        color: 'red',
-                        border: 'none',
-                        fontSize: '0.7rem',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      *Select an image first
-                    </div>
-                  )}
                 </Button>
               </div>
             </div>
