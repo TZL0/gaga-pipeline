@@ -1,0 +1,33 @@
+GAGA WebApp->Service X:Generate X
+activate GAGA WebApp
+activate Service X
+Service X -> Service X:Generate Task ID
+Service X -> Queue X: Push Task
+Queue X --> Service X:OK
+
+Worker->Queue X:Get Next Task
+activate Worker
+Queue X--> Worker: Next Task
+Service X-->GAGA WebApp: Task ID
+deactivate Service X
+
+GAGA WebApp->Service X:Poll Status for Task ID
+activate Service X
+Service X->Queue X:Get Task ID Status
+Queue X-->Service X:Pending
+Service X-->GAGA WebApp:Pending
+deactivate Service X
+
+Worker->Queue X:Complete Task
+Queue X-->Worker:OK
+deactivate Worker
+
+GAGA WebApp->Service X:Poll Status for Task ID
+activate Service X
+Service X->Queue X:Get Task ID Status
+Queue X-->Service X:Complete
+Service X-> Queue X:Pop Task
+Queue X-->Service X:OK
+Service X-->GAGA WebApp:Completed, Result X
+deactivate Service X
+deactivate GAGA WebApp

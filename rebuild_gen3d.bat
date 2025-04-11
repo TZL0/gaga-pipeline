@@ -1,0 +1,1 @@
+docker compose up -d --force-recreate --build gen3d
