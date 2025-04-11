@@ -1,0 +1,34 @@
+.input {
+    outline: 2px solid var(--color-primary);
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+}
+
+.input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.input:hover {
+    outline: 2px solid var(--color-primary-dark-1);
+}
+
+.input:focus {
+    outline: 2px solid var(--color-primary-light-1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 500;
+}
