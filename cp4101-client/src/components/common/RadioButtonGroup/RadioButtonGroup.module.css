@@ -2,7 +2,7 @@
     display: inline-flex;
     align-items: center;
     cursor: pointer;
-    margin-right: 1rem;
+    margin: 0 1rem 0 0;
     position: relative;
 }
 
@@ -17,9 +17,8 @@
 .radio-mark {
     width: 18px;
     height: 18px;
-    border: 2px solid #007bff;
+    border: 2px solid var(--color-primary);
     border-radius: 50%;
-    margin-right: 8px;
     position: relative;
 }
 
@@ -27,7 +26,7 @@
     content: "";
     width: 10px;
     height: 10px;
-    background-color: #007bff;
+    background-color: var(--color-primary);
     border-radius: 50%;
     position: absolute;
     top: 3px;
