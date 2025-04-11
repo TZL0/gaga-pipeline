@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReactCrop from 'react-image-crop';
 import { FiPlus, FiRotateCcw, FiRotateCw, FiX } from 'react-icons/fi';
-import { Button } from '../common';
+import { Button, Slider } from '../common';
 import 'react-image-crop/dist/ReactCrop.css';
 
 function getCroppedImg(image, crop, rotation = 0) {
@@ -124,7 +124,7 @@ const ImageCropSection = ({ imageUrl, addToImageGallery, setError, loading }) =>
             </div>
             
             <div style={{ width: '100%', boxSizing: 'border-box' }}>
-              <input
+              <Slider
                 id="rotate-slider"
                 type="range"
                 min="-180"
