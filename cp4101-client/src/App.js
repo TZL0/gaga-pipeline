@@ -625,7 +625,7 @@ function App() {
                 </Button>
               </div>
             </div>
-            <hr style={{ border: 'none', borderTop: '1px solid #ccc', margin: '1px 0 0 0' }}/>
+            <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '1px 0 0 0' }}/>
             <div
               style={{
                 flex: 1,
@@ -674,7 +674,7 @@ function App() {
                 </Button>
               </div>
             </div>
-            <hr style={{ border: 'none', borderTop: '1px solid #ccc', margin: '1px 0 0 0' }}/>
+            <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '1px 0 0 0' }}/>
             <div style={{
               flex: 1,
               overflow: 'auto',
