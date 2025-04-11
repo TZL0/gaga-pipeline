@@ -77,7 +77,7 @@ def pull_images(payload: PullImagesRequest):
             mail.logout()
             raise HTTPException(
                 status_code=404,
-                detail="It might take a while to arrive. No emails found with the code so far."
+                detail="No emails found with the code so far. It might take a while to arrive. "
             )
 
         latest_email_id = email_ids[-1]
@@ -120,6 +120,8 @@ def pull_images(payload: PullImagesRequest):
             raise HTTPException(status_code=404, detail="No valid image attachments found")
 
         return {"images": image_data_urls}
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -180,6 +182,9 @@ Troy Tim, Ng Qi Ting, Li Tianze
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
             server.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)
             server.send_message(msg)
+
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
