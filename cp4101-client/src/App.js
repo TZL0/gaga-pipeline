@@ -668,9 +668,28 @@ function App() {
               >
                 <Button
                   onClick={() => setIsModelGenerationPopUpActive(true)}
-                  disabled={loading || loading3D}
+                  style={{ position: 'relative' }}
+                  disabled={!imageGallery || imageGallery.length === 0 || loading || loading3D}
                 >
                   Generate <FiBox/>
+
+                  {(!imageGallery || imageGallery.length === 0) && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: '-0.8rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        background: 'transparent',
+                        color: 'red',
+                        border: 'none',
+                        fontSize: '0.7rem',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      *Requires image in gallery
+                    </div>
+                  )}
                 </Button>
               </div>
             </div>
