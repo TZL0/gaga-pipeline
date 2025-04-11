@@ -9,6 +9,7 @@ const ImageGallery = ({
   selectImage,
   loading,
   loading3D,
+  noWrap = false,
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const imageRefs = useRef([]);
@@ -44,7 +45,7 @@ const ImageGallery = ({
           <div
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
+              flexWrap: noWrap ? 'no-wrap' : 'wrap',
               gap: '10px',
               justifyContent: 'left',
             }}
