@@ -541,12 +541,10 @@ function App() {
         setMeshSimplifyRatio={setMeshSimplifyRatio}
         loading3D={loading3D}
         loading={loading}
-        imageUrl={imageUrl}
-        setImageUrl={setImageUrl}
         generate3DModel={generate3DModel}
         imageGallery={imageGallery}
         setImageGallery={setImageGallery}
-        selectImage={selectGalleryImage}
+        selectedImageUrl={imageUrl}
       />
 
       <SendFilePopUp
