@@ -83,7 +83,7 @@ const ImageCropSection = ({ imageUrl, addToImageGallery, setError, loading }) =>
           justifyContent: 'flex-start',
           flex: 1,
           height: '100%',
-          gap: '1.5rem',
+          gap: '1rem',
         }}
       >
         {imageUrl && (
@@ -113,18 +113,11 @@ const ImageCropSection = ({ imageUrl, addToImageGallery, setError, loading }) =>
                 }}
               />
             </ReactCrop>
-    
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <label htmlFor="rotate-slider" style={{ marginRight: '8px' }}>
-                Rotate:
-              </label>
-              <span style={{ fontWeight: 'bold' }}>
-                {rotate}°
-              </span>
-            </div>
             
-            <div style={{ width: '100%', boxSizing: 'border-box' }}>
+            <div style={{ width: '100%' }}>
               <Slider
+                label="Rotate"
+                displayedValue={`${rotate}°`}
                 id="rotate-slider"
                 type="range"
                 min="-180"
@@ -137,7 +130,7 @@ const ImageCropSection = ({ imageUrl, addToImageGallery, setError, loading }) =>
             </div>
 
 
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
               <Button onClick={clearEdit} disabled={loading}>
                 <FiX /> Clear Edit
               </Button>
