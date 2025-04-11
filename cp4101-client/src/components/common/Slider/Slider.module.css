@@ -2,7 +2,7 @@
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 8px;
+    height: 6px;
     background: whitesmoke;
     border-radius: 4px;
     outline: none;
@@ -15,12 +15,12 @@
 }
 
 .slider:hover {
-    background: lightgrey;
+    filter: brightness(0.95);
 }
 
 .slider::-moz-range-track {
     background: whitesmoke;
-    height: 8px;
+    height: 6px;
     border-radius: 4px;
     border: 1px solid var(--color-border)
 }
@@ -30,7 +30,7 @@
     appearance: none;
     width: 15px;
     height: 15px;
-    background: var(--color-primary);
+    background: var(--color-primary-light-1);
     border-radius: 50%;
     cursor: pointer;
     border: none;
@@ -48,7 +48,7 @@ input[type="range"]:disabled::-webkit-slider-thumb {
 .slider::-moz-range-thumb {
     width: 15px;
     height: 15px;
-    background: var(--color-primary);
+    background: var(--color-primary-light-1);
     border: none;
     border-radius: 50%;
     cursor: pointer;
