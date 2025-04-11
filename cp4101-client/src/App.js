@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FiBox, FiImage, FiUpload } from 'react-icons/fi';
+import { FiBox, FiImage, FiMail, FiUpload } from 'react-icons/fi';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
@@ -541,12 +541,10 @@ function App() {
         setMeshSimplifyRatio={setMeshSimplifyRatio}
         loading3D={loading3D}
         loading={loading}
-        imageUrl={imageUrl}
-        setImageUrl={setImageUrl}
         generate3DModel={generate3DModel}
         imageGallery={imageGallery}
         setImageGallery={setImageGallery}
-        selectImage={selectGalleryImage}
+        selectedImageUrl={imageUrl}
       />
 
       <SendFilePopUp
@@ -609,13 +607,13 @@ function App() {
                   onClick={() => setIsEmailUploadPopUpActive(true)}
                   disabled={loading || loading3D}
                 >
-                  Remote Upload <FiUpload/>
+                  <FiMail/>
                 </Button>
                 <Button
                   onClick={() => fileInputRef.current?.click()}
                   disabled={loading || loading3D}
                 >
-                  Upload <FiUpload/>
+                  <FiUpload/>
                 </Button>
                 <Button
                   onClick={() => setIsImageGenerationPopUpActive(true)}
@@ -625,7 +623,7 @@ function App() {
                 </Button>
               </div>
             </div>
-            <hr style={{ border: 'none', borderTop: '1px solid #ccc', margin: '1px 0 0 0' }}/>
+            <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '1px 0 0 0' }}/>
             <div
               style={{
                 flex: 1,
@@ -660,7 +658,7 @@ function App() {
               <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.5rem',
@@ -668,14 +666,12 @@ function App() {
               >
                 <Button
                   onClick={() => setIsModelGenerationPopUpActive(true)}
-                  style={{
-                    position: 'relative',
-                  }}
-                  disabled={!imageUrl || loading || loading3D}
+                  style={{ position: 'relative' }}
+                  disabled={!imageGallery || imageGallery.length === 0 || loading || loading3D}
                 >
                   Generate <FiBox/>
 
-                  {!imageUrl && (
+                  {(!imageGallery || imageGallery.length === 0) && (
                     <div
                       style={{
                         position: 'absolute',
@@ -689,13 +685,13 @@ function App() {
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      *Select an image first
+                      *Requires image in gallery
                     </div>
                   )}
                 </Button>
               </div>
             </div>
-            <hr style={{ border: 'none', borderTop: '1px solid #ccc', margin: '1px 0 0 0' }}/>
+            <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '1px 0 0 0' }}/>
             <div style={{
               flex: 1,
               overflow: 'auto',

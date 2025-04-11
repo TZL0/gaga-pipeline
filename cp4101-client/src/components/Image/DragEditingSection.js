@@ -47,20 +47,17 @@ const DragEditingSection = ({
 
   return (
     <>
-      <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="approach-select" style={{ marginRight: '0.5rem' }}>
-          Point-based Editing Approach:
-        </label>
-        <Select
-          id="approach-select"
-          value={selectedApproach}
-          onChange={handleApproachChange}
-          disabled={loading}
-        >
-          <option value="DragDiffusion">DragDiffusion</option>
-          <option value="InstantDrag" style={{ color: 'grey' }}>InstantDrag (to be supported)</option>
-        </Select>
-      </div>
+      <Select
+        style={{ width: 'auto', marginBottom: '1rem' }}
+        label="Point-based Editing Approach"
+        id="approach-select"
+        value={selectedApproach}
+        onChange={handleApproachChange}
+        disabled={loading}
+      >
+        <option value="DragDiffusion">DragDiffusion</option>
+        <option value="InstantDrag" style={{ color: 'grey' }}>InstantDrag (to be supported)</option>
+      </Select>
 
       {renderApproachComponent()}
     </>

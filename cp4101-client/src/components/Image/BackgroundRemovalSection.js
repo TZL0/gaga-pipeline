@@ -68,7 +68,7 @@ const BackgroundRemovalSection = ({
           justifyContent: 'flex-start',
           flex: 1,
           height: '100%',
-          gap: '1.5rem',
+          gap: '1rem',
         }}
       >
         <img

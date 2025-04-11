@@ -48,18 +48,27 @@ const ImageMainSection = ({
                 gap: '1.5rem',
               }}
             >
-              <img
-                src={imageUrl}
-                alt="Selected or Generated"
+              <div
                 style={{
-                  display: 'block',
-                  maxWidth: '512px',
-                  maxHeight: '512px',
-                  objectFit: 'cover',
-                  border: '2px solid var(--color-border)',
-                  borderRadius: '4px',
+                  width: '100%',
+                  padding: '0 1.5rem',
+                  boxSizing: 'border-box',
                 }}
-              />
+              >
+                <img
+                  src={imageUrl}
+                  alt="Selected or Generated"
+                  style={{
+                    display: 'block',
+                    maxWidth: '512px',
+                    maxHeight: '512px',
+                    objectFit: 'cover',
+                    border: '2px solid var(--color-border)',
+                    borderRadius: '4px',
+                    margin: '0 auto',
+                  }}
+                />
+              </div>
             </div>
             <div
               style={{
@@ -71,11 +80,9 @@ const ImageMainSection = ({
                 height: '100%',
               }}
             >
-              <div style={{ marginBottom: '1rem' }}>
-                <label htmlFor="editAction" style={{ marginRight: '0.5rem' }}>
-                  Select Action:
-                </label>
+              <div style={{ marginBottom: '0.5rem' }}>
                 <Select
+                  label="Edit Mode"
                   id="editAction"
                   onChange={(e) => {
                     const value = e.target.value;

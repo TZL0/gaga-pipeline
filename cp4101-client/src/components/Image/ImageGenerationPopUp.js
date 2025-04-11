@@ -43,7 +43,7 @@ const ImageGenerationPopUp = ({
       onClose={() => setIsImageGenerationPopUpActive(false)}
       isCloseDisabled={loading}
     >
-      <h2>Image Generation</h2>
+      <h2 style={{ margin: '0 auto 0.5rem auto' }}>Image Generation</h2>
 
       <form onSubmit={generateImage}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', justifyContent: 'center', margin: '0 3rem' }}>
@@ -77,7 +77,6 @@ const ImageGenerationPopUp = ({
           </Select>
           <TextField
             label="Prompt"
-            type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter prompt here"
@@ -85,11 +84,10 @@ const ImageGenerationPopUp = ({
           />
           <TextField
             label="Negative Prompt"
-            type="text"
             value={negativePrompt}
             onChange={(e) => setNegativePrompt(e.target.value)}
             placeholder="Enter negative prompt here"
-            style={{ color: '#8B0000' }}
+            inputStyle={{ color: '#8B0000' }}
             disabled={loading}
           />
           <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
@@ -188,7 +186,7 @@ const ImageGenerationPopUp = ({
             type="submit"
             disabled={loading || loading3D}
             isLoading={loading}
-            style={{ marginTop: '1.5rem', width: '100%' }}
+            style={{ marginTop: '1rem', width: '100%' }}
           >
             Generate
           </Button>

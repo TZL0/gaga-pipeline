@@ -6,6 +6,7 @@ const PopUp = ({
     zIndex = 1000,
     onClose,
     isCloseDisabled,
+    style,
 }) => {
     const tryClose = () => {
         if (isCloseDisabled)
@@ -16,15 +17,17 @@ const PopUp = ({
 
     return (
         <div className={styles.background} style={{ zIndex: zIndex }} onClick={tryClose}>
-            <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-                {children}
-                <button
-                    onClick={tryClose}
-                    disabled={isCloseDisabled}
-                    className={styles.closebutton}
-                >
-                    <FiX/>
-                </button>
+            <div className={styles.popupWrapper}>
+                <div className={styles.popup} onClick={(e) => e.stopPropagation()} style={style}>
+                    {children}
+                    <button
+                        onClick={tryClose}
+                        disabled={isCloseDisabled}
+                        className={styles.closebutton}
+                    >
+                        <FiX/>
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 // src/components/DragDiffusionPage.js
 import React, { useState, useRef, useEffect } from 'react';
 import { FiDownload, FiPlus, FiTrash, FiUpload } from 'react-icons/fi';
-import { Button, Select } from '../common';
+import { Button, Select, Slider, TextField } from '../common';
 
 const DragDiffusionPage = ({
   taskStatusPoller,
@@ -601,14 +601,12 @@ const DragDiffusionPage = ({
 
   return (
     <>
-      <div style={{ position: 'relative' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
         {currentStep === 'train' && (
           <>
-            <div style={{ marginBottom: '1rem' }}>
-              <label htmlFor="model" style={{ marginRight: '0.5rem' }}>
-                Model:
-              </label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', margin: '0 auto' }}>
               <Select
+                label="Model"
                 name="model"
                 id="model"
                 value={loraParams.model}
@@ -625,91 +623,59 @@ const DragDiffusionPage = ({
                   SG161222/RealVisXL_V4.0 (to be supported)
                 </option>
               </Select>
+              <TextField
+                label="LoRA Steps"
+                isNumber
+                type="number"
+                name="lora_step"
+                value={loraParams.lora_step}
+                onChange={handleLoraParamChange}
+                disabled={isLoraTraining || isDragEditing}
+              />
+              <TextField
+                label="LoRA Learning Rate"
+                isNumber
+                type="number"
+                step="0.0001"
+                name="lora_lr"
+                value={loraParams.lora_lr}
+                onChange={handleLoraParamChange}
+                style={{ textAlign: 'right' }}
+                disabled={isLoraTraining || isDragEditing}
+              />
+              <TextField
+                label="LoRA Batch Size"
+                isNumber
+                type="number"
+                name="lora_batch_size"
+                value={loraParams.lora_batch_size}
+                onChange={handleLoraParamChange}
+                style={{ textAlign: 'right' }}
+                disabled={isLoraTraining || isDragEditing}
+              />
+              <TextField
+                label="LoRA Rank"
+                isNumber
+                type="number"
+                name="lora_rank"
+                value={loraParams.lora_rank}
+                onChange={handleLoraParamChange}
+                style={{ textAlign: 'right' }}
+                disabled={isLoraTraining || isDragEditing}
+              />
+              <TextField
+                label="Prompt"
+                type="text"
+                name="prompt"
+                value={loraParams.prompt}
+                onChange={handleLoraParamChange}
+                style={{ textAlign: 'left' }}
+                disabled={isLoraTraining || isDragEditing}
+                placeholder="Enter prompt here"
+              />
             </div>
-
-            <table style={{ margin: '0 auto 1rem auto', borderCollapse: 'collapse' }}>
-              <tbody>
-                <tr>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                    LoRA Steps
-                  </td>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                    <input
-                      type="number"
-                      name="lora_step"
-                      value={loraParams.lora_step}
-                      onChange={handleLoraParamChange}
-                      style={{ textAlign: 'right' }}
-                      disabled={isLoraTraining || isDragEditing}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                    LoRA Learning Rate
-                  </td>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                    <input
-                      type="number"
-                      step="0.0001"
-                      name="lora_lr"
-                      value={loraParams.lora_lr}
-                      onChange={handleLoraParamChange}
-                      style={{ textAlign: 'right' }}
-                      disabled={isLoraTraining || isDragEditing}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                    LoRA Batch Size
-                  </td>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                    <input
-                      type="number"
-                      name="lora_batch_size"
-                      value={loraParams.lora_batch_size}
-                      onChange={handleLoraParamChange}
-                      style={{ textAlign: 'right' }}
-                      disabled={isLoraTraining || isDragEditing}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                    LoRA Rank
-                  </td>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                    <input
-                      type="number"
-                      name="lora_rank"
-                      value={loraParams.lora_rank}
-                      onChange={handleLoraParamChange}
-                      style={{ textAlign: 'right' }}
-                      disabled={isLoraTraining || isDragEditing}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                    Prompt
-                  </td>
-                  <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right', resize: 'vertical' }}>
-                    <input
-                      type="text"
-                      name="prompt"
-                      value={loraParams.prompt}
-                      onChange={handleLoraParamChange}
-                      style={{ textAlign: 'left' }}
-                      disabled={isLoraTraining || isDragEditing}
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div style={{ margin: '0 0 0.5rem 0' }} >{loraTrainingStatus}</div>
-            <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
+            <div style={{ margin: '1rem auto 0.25rem auto' }} >{loraTrainingStatus}</div>
+            <div style={{ display: 'inline-flex', gap: '0.5rem', margin: '0 auto' }}>
               {trainedLoraMapping[imageUrl] ? (
                 <>
                   <Button
@@ -746,6 +712,7 @@ const DragDiffusionPage = ({
                 </>
               )}
             </div>
+            
             <Button
               style={{
                 margin: '1rem auto 0 auto'
@@ -760,7 +727,7 @@ const DragDiffusionPage = ({
 
         {currentStep === 'dragDraw' && (
           <div>
-            <div style={{ marginBottom: '0.5rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
               <div
                 style={{
                   display: 'flex',
@@ -787,19 +754,17 @@ const DragDiffusionPage = ({
                   onMouseUp={handleMaskMouseUp}
                 />
                 <Button onClick={clearMask} disabled={isDragEditing}>Clear Mask</Button>
-                <div style={{ display: 'flex' }}>
-                  <span style={{ marginLeft: '5px', width: '100px' }}>Brush Radius: {maskRadius}px</span>
-                  <input
-                    id="maskRadius"
-                    type="range"
-                    min="1"
-                    max="50"
-                    value={maskRadius}
-                    onChange={(e) => setMaskRadius(Number(e.target.value))}
-                    style={{ margin: '0 0 0 5px' }}
-                    disabled={isDragEditing}
-                  />
-                </div>
+                <Slider
+                  label="Brush Radius"
+                  displayedValue={`${maskRadius}px`}
+                  id="maskRadius"
+                  type="range"
+                  min="1"
+                  max="50"
+                  value={maskRadius}
+                  onChange={(e) => setMaskRadius(Number(e.target.value))}
+                  disabled={isDragEditing}
+                />
               </div>
               <div
                 style={{
@@ -851,132 +816,70 @@ const DragDiffusionPage = ({
 
         {currentStep === 'dragParam' && (
           <div>
-            <div
-              style={{
-                marginBottom: '1rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                gap: '0.5rem',
-              }}
-            >
-              <h5 style={{ margin: '0 auto' }}>Drag Editing Parameters</h5>
-              <table style={{ margin: '0 auto', borderCollapse: 'collapse' }}>
-                <tbody>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Inversion Strength
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                      <input
-                        type="number"
-                        step="0.01"
-                        name="inversion_strength"
-                        value={dragParams.inversion_strength}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'right' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Lam
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                      <input
-                        type="number"
-                        step="0.01"
-                        name="lam"
-                        value={dragParams.lam}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'right' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Latent LR
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                      <input
-                        type="number"
-                        step="0.01"
-                        name="latent_lr"
-                        value={dragParams.latent_lr}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'right' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Number of Pixel Steps
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                      <input
-                        type="number"
-                        name="n_pix_step"
-                        value={dragParams.n_pix_step}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'right' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Start Step
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                      <input
-                        type="number"
-                        name="start_step"
-                        value={dragParams.start_step}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'right' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Start Layer
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right' }}>
-                      <input
-                        type="number"
-                        name="start_layer"
-                        value={dragParams.start_layer}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'right' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'left' }}>
-                      Prompt
-                    </td>
-                    <td style={{ padding: '0.5rem', border: '1px solid #ccc', textAlign: 'right', resize: 'vertical' }}>
-                      <input
-                        type="text"
-                        name="prompt"
-                        value={dragParams.prompt}
-                        onChange={handleDragParamChange}
-                        style={{ textAlign: 'left' }}
-                        disabled={isDragEditing}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <h5 style={{ margin: '0 auto 0.5rem auto' }}>Drag Editing Parameters</h5>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+              <TextField
+                label="Inversion Strength"
+                isNumber
+                step="0.01"
+                name="inversion_strength"
+                value={dragParams.inversion_strength}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+              />
+              <TextField
+                label="Lam"
+                isNumber
+                step="0.01"
+                name="lam"
+                value={dragParams.lam}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+              />
+              <TextField
+                label="Latent LR"
+                isNumber
+                step="0.01"
+                name="latent_lr"
+                value={dragParams.latent_lr}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+              />
+              <TextField
+                label="Number of Pixel Steps"
+                isNumber
+                name="n_pix_step"
+                value={dragParams.n_pix_step}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+              />
+              <TextField
+                label="Start Step"
+                isNumber
+                name="start_step"
+                value={dragParams.start_step}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+              />
+              <TextField
+                label="Start Layer"
+                isNumber
+                name="start_layer"
+                value={dragParams.start_layer}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+              />
+              <TextField
+                label="Prompt"
+                name="prompt"
+                value={dragParams.prompt}
+                onChange={handleDragParamChange}
+                disabled={isDragEditing}
+                placeholder="Enter prompt here"
+              />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem' }}>
               <Button onClick={() => setCurrentStep('dragDraw')} disabled={isDragEditing}>
                 Back
               </Button>
