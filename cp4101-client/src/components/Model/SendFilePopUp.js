@@ -1,6 +1,6 @@
 // SendFilePopUp.js
 import React, { useState } from 'react';
-import { Button, PopUp } from '../common/index.js';
+import { Button, PopUp, TextField } from '../common';
 import { FiSend } from 'react-icons/fi';
 
 const SendFilePopUp = ({
@@ -55,24 +55,26 @@ const SendFilePopUp = ({
 
   return (
     <PopUp onClose={() => setIsSendFilePopUpActive(false)}>
-      <h2>Send Your Model</h2>
-      <p>Please enter your email address to receive the model zip file:</p>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        style={{
-          width: '100%',
-          padding: '0.5rem',
-          margin: '1rem 0',
-          fontSize: '1rem',
-          boxSizing: 'border-box'
-        }}
-      />
-      <Button onClick={handleSendFile} disabled={isSending}>
-        {isSending ? 'Sending...' : 'Send'} {!isSending && <FiSend />}
-      </Button>
+      <div style={{ padding: '0 3rem', boxSizing: 'border-box' }}>
+        <h2>Send Your Model</h2>
+        <p>Please enter your email address to receive the model zip file:</p>
+        <TextField
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
+          style={{
+            width: '100%',
+            padding: '0.5rem',
+            margin: '1rem 0',
+            fontSize: '1rem',
+            boxSizing: 'border-box'
+          }}
+        />
+        <Button onClick={handleSendFile} disabled={isSending} style={{ margin: '0 auto' }}>
+          {isSending ? 'Sending...' : 'Send'} {!isSending && <FiSend />}
+        </Button>
+      </div>
     </PopUp>
   );
 };
