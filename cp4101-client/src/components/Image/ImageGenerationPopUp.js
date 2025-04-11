@@ -87,7 +87,7 @@ const ImageGenerationPopUp = ({
             value={negativePrompt}
             onChange={(e) => setNegativePrompt(e.target.value)}
             placeholder="Enter negative prompt here"
-            style={{ color: '#8B0000' }}
+            inputStyle={{ color: '#8B0000' }}
             disabled={loading}
           />
           <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
