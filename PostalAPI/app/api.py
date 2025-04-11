@@ -142,13 +142,13 @@ def send_file(email: str = Form(...), file: UploadFile = File(...)):
 
         text = """Dear 26th STePS Participant,
 
-Thank you for trying out our Game Asset Generative AI Pipeline.
-Please find attached the generated files for your review.
-You can unzip the attached file and upload the .glb file to https://glb.ee/ to view your assets.
-Please note: You need to register at https://uvents.nus.edu.sg/event/26th-steps/registration before voting.
-We would be very grateful if you could also vote for us at https://uvents.nus.edu.sg/event/26th-steps/vote.
+Thank you for exploring our innovative Game Asset Generative AI Pipeline (MComp-FYP-11)! We hope you enjoyed the creative journey with our tools as much as we enjoyed building them.
 
-We wish you a wonderful day ahead!
+We’re excited to share the generated files with you—simply unzip the attached package and upload the .glb file to https://glb.ee/ to view your assets in 3D.
+
+We’d be thrilled if you could also support us by voting at https://uvents.nus.edu.sg/event/26th-steps/vote. (Please note that registration at https://uvents.nus.edu.sg/event/26th-steps/registration is required before voting.) Your support not only encourages our team but also helps us continue to push the boundaries of creative technology.
+
+Have a fantastic day ahead!
 
 Best regards,
 Troy Tim, Ng Qi Ting, Li Tianze
@@ -157,17 +157,16 @@ Troy Tim, Ng Qi Ting, Li Tianze
         html = """\
 <html>
   <body>
-    <p>Dear 26th STePS Visitor,</p>
-    <p>Thank you for trying out our <b>Game Asset Generative AI Pipeline (MComp-FYP-11)</b>.</p>
-    <p>Please find attached the generated files for your review.</p>
-    <p>You can unzip the attached file and upload the .glb file to <a href="https://glb.ee/"><b>https://glb.ee/</b></a> to view your assets.</p>
-    <p><b>We would be very grateful if you could also vote for us at <a href="https://uvents.nus.edu.sg/event/26th-steps/vote">https://uvents.nus.edu.sg/event/26th-steps/vote</b></a>.</p>
-    <p>Please note: You need to register at <a href="https://uvents.nus.edu.sg/event/26th-steps/registration"><b>https://uvents.nus.edu.sg/event/26th-steps/registration</b></a> before voting.</p>
-    <p>We wish you a wonderful day ahead!</p>
+    <p>Dear 26th STePS Participant,</p>
+    <p>Thank you for exploring our innovative <strong>Game Asset Generative AI Pipeline (MComp-FYP-11)</strong>! We hope you enjoyed the creative journey with our tools as much as we enjoyed building them.</p>
+    <p>We’re excited to share the generated files with you—simply unzip the attached package and upload the <code>.glb</code> file to <a href="https://glb.ee/"><strong>https://glb.ee/</strong></a> to view your assets in 3D.</p>
+    <p>We’d be thrilled if you could also support us by voting at <a href="https://uvents.nus.edu.sg/event/26th-steps/vote"><strong>https://uvents.nus.edu.sg/event/26th-steps/vote</strong></a>. (Please note that registration at <a href="https://uvents.nus.edu.sg/event/26th-steps/registration"><strong>https://uvents.nus.edu.sg/event/26th-steps/registration</strong></a> is required before voting.) Your support not only encourages our team but also helps us continue to push the boundaries of creative technology.</p>
+    <p>Have a fantastic day ahead!</p>
     <p>Best regards,<br>
        Troy Tim, Ng Qi Ting, Li Tianze</p>
   </body>
 </html>
+
 """
 
         msg.set_content(text)
