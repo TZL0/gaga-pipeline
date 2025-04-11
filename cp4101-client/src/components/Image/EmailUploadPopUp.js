@@ -66,29 +66,31 @@ const EmailUploadPopUp = ({
 
   return (
     <PopUp onClose={() => setIsEmailUploadPopUpActive(false)}>
-      <h2>Email Upload Instructions</h2>
-      <p>
-        Please send an email with the subject <strong>{code}</strong> to{' '}
-        <a href="mailto:gaga@tianze.li">gaga@tianze.li</a>.
-        <br />
-        Attach your image files (JPG, PNG, HEIF) to the email.
-      </p>
-      <p>
-        Scan the QR code below to open your default email client with the
-        proper recipient and subject.
-      </p>
-      <div style={{ margin: '1rem auto', width: 'fit-content' }}>
-        <QRCodeCanvas value={mailtoUrl} size={128} />
+      <div style={{ padding: '0 3rem', boxSizing: 'border-box' }}>
+        <h2>Email Upload Instructions</h2>
+        <p>
+          Please send an email with the subject <strong>{code}</strong> to{' '}
+          <a href="mailto:gaga@tianze.li">gaga@tianze.li</a>.
+          <br />
+          Attach your image files (JPG, PNG, HEIF) to the email.
+        </p>
+        <p>
+          Scan the QR code below to open your default email client with the
+          proper recipient and subject.
+        </p>
+        <div style={{ margin: '1rem auto', width: 'fit-content' }}>
+          <QRCodeCanvas value={mailtoUrl} size={128} />
+        </div>
+        <p>
+          Once the email is sent, fetch the images and add them to your
+          gallery.
+          <br />
+          It may take a few minutes to import the images.
+        </p>
+        <Button onClick={fetchImages} disabled={isFetching} style={{ margin: '0 auto' }}>
+          {isFetching ? 'Fetching...' : 'Fetch Images' } {!isFetching && <FiPlus />}
+        </Button>
       </div>
-      <p>
-        Once the email is sent, fetch the images and add them to your
-        gallery.
-        <br />
-        It may take a few minutes to import the images.
-      </p>
-      <Button onClick={fetchImages} disabled={isFetching}>
-        {isFetching ? 'Fetching...' : 'Fetch Images' } {!isFetching && <FiPlus />}
-      </Button>
     </PopUp>
   );
 };
