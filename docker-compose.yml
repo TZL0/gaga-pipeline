@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - huggingface-cache:/root/.cache/huggingface
+      - ./huggingface-cache:/root/.cache/huggingface:rw
     deploy:
       resources:
         reservations:
@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     # container_name: drag_diff_api
     volumes:
-      - huggingface-cache:/root/.cache/huggingface
+      - ./huggingface-cache:/root/.cache/huggingface:rw
     ports:
       - "8010:8010"
     depends_on:
@@ -40,6 +40,8 @@ services:
       context: ./RemoveBackgroundAPI
       dockerfile: Dockerfile
     # container_name: background_removal_api
+    volumes:
+      - ./huggingface-cache:/root/.cache/huggingface:rw
     ports:
       - "8011:8011"
     deploy:
@@ -56,6 +58,8 @@ services:
       context: ./Gen3DAPI
       dockerfile: Dockerfile
     # container_name: gen-3d-api
+    volumes:
+      - ./huggingface-cache:/root/.cache/huggingface:rw
     ports:
       - "8001:8001"
     deploy:
@@ -71,6 +75,8 @@ services:
       context: ./PostProcessAPI
       dockerfile: Dockerfile
     # container_name: post_process_api
+    volumes:
+      - ./huggingface-cache:/root/.cache/huggingface:rw
     ports:
       - "8002:8002"
 
@@ -78,6 +84,8 @@ services:
     build:
       context: ./PostalAPI
       dockerfile: Dockerfile
+    volumes:
+      - ./huggingface-cache:/root/.cache/huggingface:rw
     ports:
       - "8099:8099"
 
@@ -95,9 +103,3 @@ services:
       - gen3d
       - postprocess
       - postal
-
-
-volumes:
-  huggingface-cache:
-    driver: local
-

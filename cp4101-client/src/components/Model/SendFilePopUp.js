@@ -43,7 +43,7 @@ const SendFilePopUp = ({
       }
       
       setIsSendFilePopUpActive(false);
-      setSuccess('The models have been sent successfully and will reach in your email shortly.');
+      setSuccess('The model has been sent successfully and will reach your email shortly.');
       setEmail('');
     } catch (error) {
       setError(error.message);
