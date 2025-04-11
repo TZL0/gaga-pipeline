@@ -1,0 +1,65 @@
+.radiobutton {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 1rem 0 0;
+    position: relative;
+}
+
+.radiobutton:disabled {
+    cursor: not-allowed
+}
+
+.radiobutton input[type="radio"] {
+    display: none;
+}
+
+.radio-mark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    position: relative;
+}
+
+.radiobutton input[type="radio"]:checked + .radio-mark::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.option {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    padding: 0.25rem 0.5rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: whitesmoke
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 1rem;
+}
