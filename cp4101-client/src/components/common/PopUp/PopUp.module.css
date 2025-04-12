@@ -35,22 +35,3 @@
     justify-content: center;
     align-items: center;
 }
-
-.closebutton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    color: rgb(96, 96, 96);
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.closebutton:hover {
-    color: black;
-}
-
-.closebutton:disabled {
-    opacity: 0.5;
-}

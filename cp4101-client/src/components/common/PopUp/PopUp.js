@@ -1,5 +1,6 @@
 import { FiX } from 'react-icons/fi';
 import styles from './PopUp.module.css';
+import IconButton from '../IconButton';
 
 const PopUp = ({
     children,
@@ -20,13 +21,18 @@ const PopUp = ({
             <div className={styles.popupWrapper}>
                 <div className={styles.popup} onClick={(e) => e.stopPropagation()} style={style}>
                     {children}
-                    <button
+                    <IconButton
                         onClick={tryClose}
                         disabled={isCloseDisabled}
-                        className={styles.closebutton}
+                        style={{
+                            position: 'absolute',
+                            top: '1rem',
+                            right: '1rem',
+                            fontSize: '1.5rem',
+                        }}
                     >
                         <FiX/>
-                    </button>
+                    </IconButton>
                 </div>
             </div>
         </div>
