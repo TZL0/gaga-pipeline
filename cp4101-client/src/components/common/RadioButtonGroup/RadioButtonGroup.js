@@ -14,6 +14,7 @@ const RadioButtonGroup = ({
             {options.map((opt, index) => {
                 return (
                     <div
+                        key={index}
                         className={styles.option}
                         onClick={disabled ? undefined : () => setValue(opt.value)}
                         style={{
