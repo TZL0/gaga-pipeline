@@ -275,7 +275,7 @@ function App() {
     }
   };
 
-  const generate3DModel = async () => {
+  const generate3DModel = async (imageUrl) => {
     if (!imageUrl) {
       setError('No image available to convert to 3D.');
       return;

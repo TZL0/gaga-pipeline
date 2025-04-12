@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { DEFAULT_CFG_STRENGTH, DEFAULT_MESH_SIMPLIFY_RATIO, DEFAULT_SLAT_STEPS, DEFAULT_SPARSE_CFG_STRENGTH, DEFAULT_SPARSE_STEPS, DEFAULT_TEXTURE_SIZE } from '../../constants';
 import ImageGallery from '../Image/ImageGallery';
-import { Button, PopUp, Slider, TextField } from '../common';
+import { Button, Panel, PopUp, Slider, TextField } from '../common';
+import { FiImage } from 'react-icons/fi';
 
 const ModelGenerationPopUp = ({
     isModelGenerationPopUpActive,
@@ -44,65 +45,79 @@ const ModelGenerationPopUp = ({
 
     return (
         <PopUp
-            style={{ height: '80%' }}
             id="ModelGeneration"
+            style={{ height: '80%', width: '100%' }}
             onClose={() => setIsModelGenerationPopUpActive(false)}
             isCloseDisabled={loading3D}
         >
             <div style={{ display: 'flex', height: '100%', width: '100%', justifyContent: 'center' }}>
-                <div style={{ height: '100%', width: '50%' }}>
+                <div style={{ width: '50%', height: '100%' }}>
                     <div
                         style={{
                             height: '100%',
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '0.5rem',
+                            gap: '1rem',
                             justifyContent: 'space-between',
                             alignItems: 'center',
+                            margin: '0 3rem'
                         }}
                     >
-                        <img
-                            src={imageUrl}
-                            alt={`Selected for 3D model generation`}
+                        <div
                             style={{
                                 maxWidth: '60%',
                                 maxHeight: '60%',
-                                display: 'block',
-                                objectFit: 'cover',
                                 border: '2px solid var(--color-border)',
                                 borderRadius: '4px',
-                                pointerEvents: loading || loading3D ? 'none' : 'auto',
-                            }}
-                        />
-                        <div
-                            style={{
-                                overflowX: 'auto',
-                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
                             }}
                         >
+                            {imageUrl ? (<img
+                                src={imageUrl}
+                                alt={`Selected for 3D model generation`}
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    display: 'block',
+                                    objectFit: 'cover',
+                                }}
+                            />) : (
+                                <div style={{ width: '384px', height: '384px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                    <FiImage/>
+                                    <div>No Image Selected</div>
+                                </div>
+                            )}
+                        </div>
+                        <Panel style={{ width: '100%' }}>
                             <div
                                 style={{
-                                    display: 'inline-flex',
-                                    padding: '1.5rem',
-                                    boxSizing: 'border-box',
+                                    flex: 1,
+                                    overflow: 'auto',
                                 }}
                             >
-                                <ImageGallery
-                                    imageGallery={imageGallery}
-                                    setImageGallery={setImageGallery}
-                                    imageUrl={imageUrl}
-                                    setImageUrl={setImageUrl}
-                                    selectImage={setImageUrl}
-                                    loading={loading}
-                                    loading3D={loading3D}
-                                    noWrap
-                                />
+                                <div
+                                    style={{
+                                        padding: '1.5rem',
+                                    }}
+                                >
+                                    <ImageGallery
+                                        imageGallery={imageGallery}
+                                        setImageGallery={setImageGallery}
+                                        imageUrl={imageUrl}
+                                        setImageUrl={setImageUrl}
+                                        selectImage={setImageUrl}
+                                        loading={loading}
+                                        loading3D={loading3D}
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        </Panel>
                     </div>
                 </div>
 
-                <div style={{ height: '100%', width: '50%', borderLeft: '1px solid var(--color-border)', overflow: 'auto' }}>
+                <div style={{ width: '50%', height: '100%', borderLeft: '1px solid var(--color-border)', overflow: 'auto' }}>
                     <h2 style={{ margin: '0 auto 0.5rem auto' }}>3D Model Generation</h2>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', justifyContent: 'center', margin: '0 3rem' }}>
@@ -243,7 +258,7 @@ const ModelGenerationPopUp = ({
                             </Button>
                         </div>
                         <Button
-                            onClick={generate3DModel}
+                            onClick={(imageUrl) => generate3DModel(imageUrl)}
                             disabled={!imageUrl || loading || loading3D}
                             isLoading={loading3D}
                             style={{ marginTop: '1rem', width: '100%' }}
