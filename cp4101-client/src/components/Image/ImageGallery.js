@@ -20,6 +20,7 @@ const ImageGallery = ({
       if (imageIndex !== -1 && imageRefs.current[imageIndex]) {
         imageRefs.current[imageIndex].scrollIntoView({
           behavior: 'smooth',
+          inline: 'center',
           block: 'center',
         });
       }

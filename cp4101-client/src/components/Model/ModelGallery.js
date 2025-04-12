@@ -25,6 +25,7 @@ const ModelGallery = ({
       if (modelIndex !== -1 && modelRefs.current[modelIndex]) {
         modelRefs.current[modelIndex].scrollIntoView({
           behavior: 'smooth',
+          inline: 'center',
           block: 'center',
         });
       }
