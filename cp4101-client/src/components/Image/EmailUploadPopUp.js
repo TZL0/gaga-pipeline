@@ -87,8 +87,8 @@ const EmailUploadPopUp = ({
           <br />
           It may take a few minutes to import the images.
         </p>
-        <Button onClick={fetchImages} disabled={isFetching} style={{ margin: '0 auto' }}>
-          {isFetching ? 'Fetching...' : 'Fetch Images' } {!isFetching && <FiPlus />}
+        <Button onClick={fetchImages} disabled={isFetching} isLoading={isFetching} style={{ margin: '0 auto' }}>
+          Fetch Images <FiPlus/>
         </Button>
       </div>
     </PopUp>

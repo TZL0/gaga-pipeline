@@ -17,7 +17,7 @@ const SendFilePopUp = ({
 
   const handleSendFile = async () => {
     if (!email) {
-      alert('Please enter an email address.');
+      setError('Please enter an email address.');
       return;
     }
     setIsSending(true);
@@ -71,8 +71,8 @@ const SendFilePopUp = ({
             boxSizing: 'border-box'
           }}
         />
-        <Button onClick={handleSendFile} disabled={isSending} style={{ margin: '0 auto' }}>
-          {isSending ? 'Sending...' : 'Send'} {!isSending && <FiSend />}
+        <Button onClick={handleSendFile} disabled={isSending} isLoading={isSending} style={{ margin: '0 auto' }}>
+          Send <FiSend/>
         </Button>
       </div>
     </PopUp>
