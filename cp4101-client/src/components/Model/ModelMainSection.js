@@ -47,7 +47,7 @@ const ModelMainSection = ({
             }}
           >
             <Button
-              onClick={handleDownloadModel}
+              onClick={() => handleDownloadModel(model)}
             >
               Download
               <FiDownload/>

@@ -453,7 +453,7 @@ function App() {
     return zipBlob;
   };
   
-  const handleDownloadModel = async () => { 
+  const handleDownloadModel = async (model) => { 
     if (!model || !model.glbUrl) {
       setError('No model available to download.');
       return;
@@ -713,6 +713,7 @@ function App() {
                   handleSelectModel={handleSelectModel}
                   loading={loading}
                   loading3D={loading3D}
+                  handleDownloadModel={handleDownloadModel}
                 />
               </div>
             </div>
