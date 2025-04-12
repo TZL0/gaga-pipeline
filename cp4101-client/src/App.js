@@ -10,6 +10,7 @@ import './styles/global.css';
 
 import { DEFAULT_CFG_STRENGTH, DEFAULT_GUIDANCE_SCALE, DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_WIDTH, DEFAULT_INFERENCE_STEPS, DEFAULT_MESH_SIMPLIFY_RATIO, DEFAULT_SLAT_STEPS, DEFAULT_SPARSE_CFG_STRENGTH, DEFAULT_SPARSE_STEPS, DEFAULT_TEXTURE_SIZE } from './constants.js';
 
+import { AppProvider } from './AppContext.js';
 import { Button, Panel } from './components/common';
 import ImageGallery from './components/Image/ImageGallery.js';
 import ImageGenerationPopUp from './components/Image/ImageGenerationPopUp.js';
@@ -466,6 +467,7 @@ function App() {
   };
   
   return (
+    <AppProvider>
     <div className="App">
       <div
         style={{
@@ -485,8 +487,14 @@ function App() {
         <h1>Game Asset Generative AI Pipeline</h1>
       </div>
       
-      <ErrorPopup error={error} clearError={() => setError('')} />
-      <SuccessPopup success={success} clearSuccess={() => setSuccess('')} />
+      <ErrorPopup
+        error={error}
+        clearError={() => setError('')}
+      />
+      <SuccessPopup
+        success={success}
+        clearSuccess={() => setSuccess('')}
+      />
       <EmailUploadPopUp
         isEmailUploadPopUpActive={isEmailUploadPopUpActive}
         setIsEmailUploadPopUpActive={setIsEmailUploadPopUpActive}
@@ -790,6 +798,7 @@ function App() {
         </div>
       </div>
     </div>
+    </AppProvider>
   );
 }
 

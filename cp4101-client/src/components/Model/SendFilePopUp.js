@@ -54,7 +54,7 @@ const SendFilePopUp = ({
   if (!isSendFilePopUpActive) return null;
 
   return (
-    <PopUp onClose={() => setIsSendFilePopUpActive(false)}>
+    <PopUp id="SendFile" onClose={() => setIsSendFilePopUpActive(false)} isCloseDisabled={isSending}>
       <div style={{ padding: '0 3rem', boxSizing: 'border-box' }}>
         <h2>Send Your Model</h2>
         <p>Please enter your email address to receive the model zip file:</p>

@@ -45,6 +45,7 @@ const ModelGenerationPopUp = ({
     return (
         <PopUp
             style={{ height: '80%' }}
+            id="ModelGeneration"
             onClose={() => setIsModelGenerationPopUpActive(false)}
             isCloseDisabled={loading3D}
         >

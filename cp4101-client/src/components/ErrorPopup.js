@@ -7,8 +7,8 @@ const ErrorPopup = ({ error, clearError }) => {
 
   return (
     <PopUp
+      id="Error"
       onClose={clearError}
-      zIndex={2000}
     >
       <h2>Oops..</h2>
       <p>{error}</p>

@@ -65,7 +65,7 @@ const EmailUploadPopUp = ({
   const mailtoUrl = `mailto:gaga@tianze.li?subject=${encodeURIComponent(code)}`;
 
   return (
-    <PopUp onClose={() => setIsEmailUploadPopUpActive(false)}>
+    <PopUp id="EmailUpload" onClose={() => setIsEmailUploadPopUpActive(false)} isCloseDisabled={isFetching}>
       <div style={{ padding: '0 3rem', boxSizing: 'border-box' }}>
         <h2>Email Upload Instructions</h2>
         <p>
