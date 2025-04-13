@@ -2,7 +2,7 @@ import { FiX } from 'react-icons/fi';
 import styles from './PopUp.module.css';
 import { useAppContext } from '../../../AppContext';
 import IconButton from '../IconButton';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const PopUp = ({
     children,
@@ -12,9 +12,10 @@ const PopUp = ({
     style,
 }) => {
     const { popupStackRef } = useAppContext();
+    const isCloseDisabledRef = useRef(isCloseDisabled);
+    const popupRef = useRef(null);
     const [layer, setLayer] = useState(0);
 
-    const isCloseDisabledRef = useRef(isCloseDisabled);
     useEffect(() => {
         isCloseDisabledRef.current = isCloseDisabled;
     }, [isCloseDisabled]);
@@ -25,17 +26,16 @@ const PopUp = ({
 
         popupStackRef.current.push(id);
         setLayer(popupStackRef.current.length);
-    }, []);
+    }, [id, popupStackRef]);
 
-    const tryClose = () => {
+    const tryClose = useCallback(() => {
         if (isCloseDisabledRef.current)
             return;
 
         onClose();
         popupStackRef.current = popupStackRef.current.filter((popUpId) => popUpId !== id);
-    }
-
-    const popupRef = useRef(null);
+    }, [isCloseDisabledRef, onClose, popupStackRef, id]);
+    
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (!popupStackRef.current || popupStackRef.current.length === 0)
@@ -51,7 +51,7 @@ const PopUp = ({
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
+    }, [popupStackRef, id, tryClose]);
 
     return (
         <div className={styles.background} style={{ zIndex: layer }}>
