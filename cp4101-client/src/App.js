@@ -10,6 +10,7 @@ import './styles/global.css';
 
 import { DEFAULT_CFG_STRENGTH, DEFAULT_GUIDANCE_SCALE, DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_WIDTH, DEFAULT_INFERENCE_STEPS, DEFAULT_MESH_SIMPLIFY_RATIO, DEFAULT_SLAT_STEPS, DEFAULT_SPARSE_CFG_STRENGTH, DEFAULT_SPARSE_STEPS, DEFAULT_TEXTURE_SIZE } from './constants.js';
 
+import { AppProvider } from './AppContext.js';
 import { Button, Panel } from './components/common';
 import ImageGallery from './components/Image/ImageGallery.js';
 import ImageGenerationPopUp from './components/Image/ImageGenerationPopUp.js';
@@ -137,7 +138,7 @@ function App() {
   };
 
   const get_gen3d_no_preview_api = () => {
-    return process.env.REACT_APP_GEN3D_NO_PREVIEW || 'http://127.0.0.1:7960/generate_no_preview';
+    return process.env.REACT_APP_GEN3D_NO_PREVIEW || 'http://127.0.0.1:8001/generate_no_preview';
   };
 
   const get_gen3d_status_api = () => {
@@ -145,7 +146,7 @@ function App() {
   };
 
   const get_gen3d_download_model_api = () => {
-    return process.env.REACT_APP_GEN3D_DOWNLOAD_MODEL || 'http://127.0.0.1:7960/download/model';
+    return process.env.REACT_APP_GEN3D_DOWNLOAD_MODEL || 'http://127.0.0.1:8001/download/model';
   };
 
   const get_post_processing_api = () => {
@@ -259,7 +260,7 @@ function App() {
     }
   };
 
-  const handleDownloadImage = async () => {
+  const handleDownloadImage = async (imageUrl) => {
     try {
       const response = await fetch(imageUrl);
       const blob = await response.blob();
@@ -274,7 +275,7 @@ function App() {
     }
   };
 
-  const generate3DModel = async () => {
+  const generate3DModel = async (imageUrl) => {
     if (!imageUrl) {
       setError('No image available to convert to 3D.');
       return;
@@ -452,7 +453,7 @@ function App() {
     return zipBlob;
   };
   
-  const handleDownloadModel = async () => { 
+  const handleDownloadModel = async (model) => { 
     if (!model || !model.glbUrl) {
       setError('No model available to download.');
       return;
@@ -466,6 +467,7 @@ function App() {
   };
   
   return (
+    <AppProvider>
     <div className="App">
       <div
         style={{
@@ -485,8 +487,14 @@ function App() {
         <h1>Game Asset Generative AI Pipeline</h1>
       </div>
       
-      <ErrorPopup error={error} clearError={() => setError('')} />
-      <SuccessPopup success={success} clearSuccess={() => setSuccess('')} />
+      <ErrorPopup
+        error={error}
+        clearError={() => setError('')}
+      />
+      <SuccessPopup
+        success={success}
+        clearSuccess={() => setSuccess('')}
+      />
       <EmailUploadPopUp
         isEmailUploadPopUpActive={isEmailUploadPopUpActive}
         setIsEmailUploadPopUpActive={setIsEmailUploadPopUpActive}
@@ -640,6 +648,7 @@ function App() {
                   selectImage={selectGalleryImage}
                   loading={loading}
                   loading3D={loading3D}
+                  handleDownloadImage={handleDownloadImage}
                 />
               </div>
             </div>
@@ -705,6 +714,7 @@ function App() {
                   handleSelectModel={handleSelectModel}
                   loading={loading}
                   loading3D={loading3D}
+                  handleDownloadModel={handleDownloadModel}
                 />
               </div>
             </div>
@@ -790,6 +800,7 @@ function App() {
         </div>
       </div>
     </div>
+    </AppProvider>
   );
 }
 

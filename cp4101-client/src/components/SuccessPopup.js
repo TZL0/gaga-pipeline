@@ -8,8 +8,8 @@ const SuccessPopup = ({ success, clearSuccess }) => {
 
   return (
     <PopUp
+      id="Success"
       onClose={clearSuccess}
-      zIndex={2000}
     >
       <h2>Congratulations</h2>
       <p>{success}</p>

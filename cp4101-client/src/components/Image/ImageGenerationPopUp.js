@@ -40,6 +40,7 @@ const ImageGenerationPopUp = ({
 
   return (
     <PopUp
+      id="ImageGeneration"
       onClose={() => setIsImageGenerationPopUpActive(false)}
       isCloseDisabled={loading}
     >

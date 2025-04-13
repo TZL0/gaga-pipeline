@@ -65,7 +65,7 @@ const EmailUploadPopUp = ({
   const mailtoUrl = `mailto:gaga@tianze.li?subject=${encodeURIComponent(code)}`;
 
   return (
-    <PopUp onClose={() => setIsEmailUploadPopUpActive(false)}>
+    <PopUp id="EmailUpload" onClose={() => setIsEmailUploadPopUpActive(false)} isCloseDisabled={isFetching}>
       <div style={{ padding: '0 3rem', boxSizing: 'border-box' }}>
         <h2>Email Upload Instructions</h2>
         <p>
@@ -87,8 +87,8 @@ const EmailUploadPopUp = ({
           <br />
           It may take a few minutes to import the images.
         </p>
-        <Button onClick={fetchImages} disabled={isFetching} style={{ margin: '0 auto' }}>
-          {isFetching ? 'Fetching...' : 'Fetch Images' } {!isFetching && <FiPlus />}
+        <Button onClick={fetchImages} disabled={isFetching} isLoading={isFetching} style={{ margin: '0 auto' }}>
+          Fetch Images <FiPlus/>
         </Button>
       </div>
     </PopUp>
