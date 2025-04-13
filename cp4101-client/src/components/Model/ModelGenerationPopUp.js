@@ -111,6 +111,7 @@ const ModelGenerationPopUp = ({
                                         selectImage={setImageUrl}
                                         loading={loading}
                                         loading3D={loading3D}
+                                        hideMenu
                                     />
                                 </div>
                             </div>
