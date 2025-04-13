@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiDownload, FiMoreVertical, FiTrash } from 'react-icons/fi';
-import { IconButton } from '../common';
+import { Button, IconButton } from '../common';
 
 const ModelGallery = ({
   modelGallery,
@@ -98,6 +98,8 @@ const ModelSlot = ({
   hideMenu,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const slotRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -112,7 +114,16 @@ const ModelSlot = ({
     setIsMenuOpen(!isMenuOpen);
   }
 
-  const menuRef = useRef(null);
+  useEffect(() => {
+    if (slotRef.current && isMenuOpen) {
+      slotRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'nearest',
+        block: 'nearest',
+      });
+    }
+  }, [isMenuOpen]);
+
   useEffect(() => {
       const handleClickOutside = (e) => {
           if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -135,6 +146,7 @@ const ModelSlot = ({
       }}
       onMouseEnter={() => setHoveredModelIndex(index)}
       onMouseLeave={() => setHoveredModelIndex(null)}
+      ref={slotRef}
     >
       <model-viewer
         ref={(el) => (modelRefs.current[index] = el)}
@@ -151,17 +163,18 @@ const ModelSlot = ({
         onClick={() => handleSelectModel(displayedModel)}
       />
       {!hideMenu && hoveredModelIndex === index && (
-        <IconButton
+        <Button
           onClick={toggleMenu}
           style={{
             position: 'absolute',
             top: '0.25rem',
             right: '0.25rem',
+            padding: '0.25rem',
           }}
           disabled={loading || loading3D}
         >
-          <FiMoreVertical size={12}/>
-        </IconButton>
+          <FiMoreVertical/>
+        </Button>
       )}
       {!hideMenu && isMenuOpen && (
         <div
