@@ -88,6 +88,13 @@ services:
       - ./huggingface-cache:/root/.cache/huggingface:rw
     ports:
       - "8099:8099"
+    environment:
+      - GAGA_POSTAL_IMAP_SERVER=${GAGA_POSTAL_IMAP_SERVER}
+      - GAGA_POSTAL_IMAP_PORT=${GAGA_POSTAL_IMAP_PORT}
+      - GAGA_POSTAL_SMTP_SERVER=${GAGA_POSTAL_SMTP_SERVER}
+      - GAGA_POSTAL_SMTP_PORT=${GAGA_POSTAL_SMTP_PORT}
+      - GAGA_POSTAL_EMAIL_ACCOUNT=${GAGA_POSTAL_EMAIL_ACCOUNT}
+      - GAGA_POSTAL_EMAIL_PASSWORD=${GAGA_POSTAL_EMAIL_PASSWORD}
 
   gaga_client:
     build:

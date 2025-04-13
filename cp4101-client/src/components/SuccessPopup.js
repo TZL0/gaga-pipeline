@@ -14,7 +14,7 @@ const SuccessPopup = ({ success, clearSuccess }) => {
     >
       <h2>Congratulations</h2>
       <p style={{ margin: '0 3rem' }}>{success}</p>
-      <FiSmile />
+      <FiSmile style={{ marginTop: '1rem' }}/>
     </PopUp>
   );
 };
