@@ -60,6 +60,7 @@ const ModelGallery = ({
           >
             {modelGallery.map((m, index) => (
               <ModelSlot
+                key={m.glbUrl}
                 displayedModel={m}
                 index={index}
                 selectedModel={model}
@@ -137,7 +138,6 @@ const ModelSlot = ({
 
   return (
     <div
-      key={displayedModel.glbUrl}
       style={{
         position: 'relative',
         display: 'inline-block',

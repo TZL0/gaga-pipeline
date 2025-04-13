@@ -55,6 +55,7 @@ const ImageGallery = ({
           >
             {imageGallery.map((img, index) => (
               <ImageSlot
+                key={img}
                 displayedImage={img}
                 index={index}
                 selectedImage={imageUrl}
@@ -132,7 +133,6 @@ const ImageSlot = ({
 
   return (
     <div
-      key={index}
       style={{
         position: 'relative',
         display: 'inline-block',
