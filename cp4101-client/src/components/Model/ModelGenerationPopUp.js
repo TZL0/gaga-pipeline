@@ -31,14 +31,15 @@ const ModelGenerationPopUp = ({
     const [imageUrl, setImageUrl] = useState(null);
     
     useEffect(() => {
-        if (isModelGenerationPopUpActive) {
-            if (selectedImageUrl) {
-                setImageUrl(selectedImageUrl);
-            } else if (imageGallery && imageGallery.length > 0) {
-                setImageUrl(imageGallery[0]);
-            }
+        if (!isModelGenerationPopUpActive || imageUrl)
+            return;
+
+        if (selectedImageUrl) {
+            setImageUrl(selectedImageUrl);
+        } else if (imageGallery && imageGallery.length > 0) {
+            setImageUrl(imageGallery[0]);
         }
-    }, [isModelGenerationPopUpActive]);
+    }, [isModelGenerationPopUpActive, imageUrl, selectedImageUrl, imageGallery]);
 
     if (!isModelGenerationPopUpActive)
         return null;
