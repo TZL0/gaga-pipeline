@@ -10,9 +10,10 @@ const SuccessPopup = ({ success, clearSuccess }) => {
     <PopUp
       id="Success"
       onClose={clearSuccess}
+      style={{ maxWidth: '30%' }}
     >
       <h2>Congratulations</h2>
-      <p>{success}</p>
+      <p style={{ margin: '0 3rem' }}>{success}</p>
       <FiSmile />
     </PopUp>
   );

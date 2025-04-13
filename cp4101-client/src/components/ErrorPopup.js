@@ -9,9 +9,10 @@ const ErrorPopup = ({ error, clearError }) => {
     <PopUp
       id="Error"
       onClose={clearError}
+      style={{ maxWidth: '30%' }}
     >
       <h2>Oops..</h2>
-      <p>{error}</p>
+      <p style={{ margin: '0 3rem' }}>{error}</p>
     </PopUp>
   );
 };
