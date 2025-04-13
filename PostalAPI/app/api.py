@@ -13,12 +13,13 @@ import smtplib
 from email.message import EmailMessage
 from werkzeug.utils import secure_filename
 
-IMAP_SERVER = "imap.privateemail.com"
-IMAP_PORT = 993
-SMTP_SERVER = "smtp.privateemail.com"
-SMTP_PORT = 465
-EMAIL_ACCOUNT = "gaga@tianze.li"
-EMAIL_PASSWORD = "gagagaga"
+IMAP_SERVER = os.environ.get("GAGA_POSTAL_IMAP_SERVER", "imap.privateemail.com")
+IMAP_PORT = int(os.environ.get("GAGA_POSTAL_IMAP_PORT", "993"))
+SMTP_SERVER = os.environ.get("GAGA_POSTAL_SMTP_SERVER", "smtp.privateemail.com")
+SMTP_PORT = int(os.environ.get("GAGA_POSTAL_SMTP_PORT", "465"))
+EMAIL_ACCOUNT = os.environ.get("GAGA_POSTAL_EMAIL_ACCOUNT", "gaga@tianze.li")
+EMAIL_PASSWORD = os.environ.get("GAGA_POSTAL_EMAIL_PASSWORD", "gagagagagaga")
+
 ALLOWED_EXTENSIONS = [".png", ".jpg", ".jpeg", ".heif", ".heic"]
 
 app = FastAPI()
