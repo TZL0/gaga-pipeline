@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install --no-cache-dir transformers==4.45.2 kornia fastapi uvicorn pillow timm
 
-RUN python -c "from transformers import AutoModelForImageSegmentation; AutoModelForImageSegmentation.from_pretrained('briaai/RMBG-2.0', trust_remote_code=True)"
+# RUN python -c "from transformers import AutoModelForImageSegmentation; AutoModelForImageSegmentation.from_pretrained('briaai/RMBG-2.0', trust_remote_code=True)"
 
 COPY app /app
 
