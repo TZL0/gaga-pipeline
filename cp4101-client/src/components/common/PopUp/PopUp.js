@@ -25,7 +25,10 @@ const PopUp = ({
             return;
 
         popupStackRef.current.push(id);
-        setLayer(popupStackRef.current.length);
+        setLayer(100 + popupStackRef.current.length);
+        return () => {
+            popupStackRef.current = popupStackRef.current.filter((popUpId) => popUpId !== id);
+        }
     }, [id, popupStackRef]);
 
     const tryClose = useCallback(() => {
@@ -33,8 +36,7 @@ const PopUp = ({
             return;
 
         onClose();
-        popupStackRef.current = popupStackRef.current.filter((popUpId) => popUpId !== id);
-    }, [isCloseDisabledRef, onClose, popupStackRef, id]);
+    }, [isCloseDisabledRef, onClose]);
     
     useEffect(() => {
         const handleClickOutside = (e) => {
