@@ -138,7 +138,7 @@ function App() {
   };
 
   const get_gen3d_no_preview_api = () => {
-    return process.env.REACT_APP_GEN3D_NO_PREVIEW || 'http://127.0.0.1:7960/generate_no_preview';
+    return process.env.REACT_APP_GEN3D_NO_PREVIEW || 'http://127.0.0.1:8001/generate_no_preview';
   };
 
   const get_gen3d_status_api = () => {
@@ -146,7 +146,7 @@ function App() {
   };
 
   const get_gen3d_download_model_api = () => {
-    return process.env.REACT_APP_GEN3D_DOWNLOAD_MODEL || 'http://127.0.0.1:7960/download/model';
+    return process.env.REACT_APP_GEN3D_DOWNLOAD_MODEL || 'http://127.0.0.1:8001/download/model';
   };
 
   const get_post_processing_api = () => {
