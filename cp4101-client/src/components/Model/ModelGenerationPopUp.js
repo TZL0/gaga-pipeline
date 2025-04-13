@@ -260,7 +260,7 @@ const ModelGenerationPopUp = ({
                             </Button>
                         </div>
                         <Button
-                            onClick={(imageUrl) => generate3DModel(imageUrl)}
+                            onClick={() => generate3DModel(imageUrl)}
                             disabled={!imageUrl || loading || loading3D}
                             isLoading={loading3D}
                             style={{ marginTop: '1rem', width: '100%' }}
