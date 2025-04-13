@@ -260,7 +260,7 @@ function App() {
     }
   };
 
-  const handleDownloadImage = async () => {
+  const handleDownloadImage = async (imageUrl) => {
     try {
       const response = await fetch(imageUrl);
       const blob = await response.blob();
@@ -648,6 +648,7 @@ function App() {
                   selectImage={selectGalleryImage}
                   loading={loading}
                   loading3D={loading3D}
+                  handleDownloadImage={handleDownloadImage}
                 />
               </div>
             </div>
