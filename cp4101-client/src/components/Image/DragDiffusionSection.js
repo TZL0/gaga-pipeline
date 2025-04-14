@@ -216,9 +216,8 @@ const DragDiffusionPage = ({
   const [maskRadius, setMaskRadius] = useState(10);
 
   useEffect(() => {
-    if (!trainedLoraMapping[imageUrl])
-      setCurrentStep('train');
-  }, [imageUrl, trainedLoraMapping]);
+    setCurrentStep('train');
+  }, [imageUrl]);
 
   useEffect(() => {
     if (!imageUrl)
@@ -232,9 +231,14 @@ const DragDiffusionPage = ({
       return;
 
     const loadImageToCanvas = (canvas, updateBaseImage = false) => {
+      if (!canvas)
+        return;
       const ctx = canvas.getContext('2d');
       const img = new Image();
       img.onload = () => {
+        if (!maskCanvasRef.current || !vectorCanvasRef.current)
+          return;
+
         const maxSize = 256;
         let { width, height } = img;
         if (width > maxSize || height > maxSize) {
@@ -260,12 +264,8 @@ const DragDiffusionPage = ({
       };
       img.src = imageUrl;
     };
-    if (maskCanvasRef.current) {
-      loadImageToCanvas(maskCanvasRef.current, false);
-    }
-    if (vectorCanvasRef.current) {
-      loadImageToCanvas(vectorCanvasRef.current, true);
-    }
+    loadImageToCanvas(maskCanvasRef.current, false);
+    loadImageToCanvas(vectorCanvasRef.current, true);
   }, [imageUrl, trainedLoraMapping, currentStep]);
 
   useEffect(() => {
