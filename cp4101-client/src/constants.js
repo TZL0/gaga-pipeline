@@ -1,6 +1,6 @@
 // image generation
-export const DEFAULT_IMAGE_WIDTH = 512;
-export const DEFAULT_IMAGE_HEIGHT = 512;
+export const DEFAULT_IMAGE_WIDTH = 1024;
+export const DEFAULT_IMAGE_HEIGHT = 1024;
 export const DEFAULT_GUIDANCE_SCALE = 1.5;
 export const DEFAULT_INFERENCE_STEPS = 4;
 
