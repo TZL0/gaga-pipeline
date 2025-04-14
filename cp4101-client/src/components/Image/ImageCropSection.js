@@ -120,8 +120,8 @@ const ImageCropSection = ({ imageUrl, addToImageGallery, setError, loading }) =>
   };
 
   return (
-    <div style={{ padding: '1rem', width: '100%' }}>
-      <div style={{ width: '100%', maxWidth: 600, margin: '0 auto' }}>
+    <div style={{ padding: '0 1.5rem', boxSizing: 'border-box' }}>
+      <div style={{ margin: '0 auto', maxWidth: '512px' }}>
         <Slider
           label="Rotate"
           displayedValue={`${rotate}°`}
@@ -132,7 +132,6 @@ const ImageCropSection = ({ imageUrl, addToImageGallery, setError, loading }) =>
           value={rotate}
           onChange={(e) => setRotate(Number(e.target.value))}
           disabled={loading}
-          style={{ width: '100%' }}
         />
       </div>
 
