@@ -31,6 +31,11 @@ const ModelGenerationPopUp = ({
     const [imageUrl, setImageUrl] = useState(null);
     
     useEffect(() => {
+        if (!isModelGenerationPopUpActive)
+            setImageUrl(null);
+    }, [isModelGenerationPopUpActive]);
+
+    useEffect(() => {
         if (!isModelGenerationPopUpActive || imageUrl)
             return;
 
