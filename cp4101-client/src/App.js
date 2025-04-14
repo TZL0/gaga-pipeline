@@ -158,7 +158,7 @@ function App() {
   };
 
   const get_send_file_api = () => {
-    return process.env.REACT_SEND_FILE || 'http://127.0.0.1:8099/send_file';
+    return process.env.REACT_APP_SEND_FILE || 'http://127.0.0.1:8099/send_file';
   };
 
   const pollTaskStatus = (taskId, task_status_api, startTime) => {
