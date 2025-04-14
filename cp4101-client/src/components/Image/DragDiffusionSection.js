@@ -688,6 +688,7 @@ const DragDiffusionPage = ({
                   <Button
                     onClick={deleteCachedLora}
                     disabled={isLoraTraining || isDragEditing}
+                    style={{ backgroundColor: 'red' }}
                   >
                     Delete LoRA <FiTrash/>
                   </Button>

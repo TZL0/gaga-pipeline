@@ -13,7 +13,7 @@
 }
 
 .input:hover {
-    outline: 2px solid var(--color-primary-dark-1);
+    filter: brightness(0.95);
 }
 
 .input:focus {
