@@ -18,6 +18,7 @@
 
 .input:focus {
     outline: 2px solid var(--color-primary-light-1);
+    background-color: whitesmoke;
 }
 
 .container {
