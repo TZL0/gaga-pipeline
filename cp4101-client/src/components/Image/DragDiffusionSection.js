@@ -217,6 +217,7 @@ const DragDiffusionPage = ({
 
   useEffect(() => {
     setCurrentStep('train');
+    setDragVectors([]);
   }, [imageUrl]);
 
   useEffect(() => {
