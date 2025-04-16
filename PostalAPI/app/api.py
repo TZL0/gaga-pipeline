@@ -163,7 +163,7 @@ Troy Tim, Ng Qi Ting, Li Tianze
     <p>Dear 26th STePS Participant,</p>
     <p>Thank you for exploring our innovative <strong>Game Asset Generative AI Pipeline (MComp-FYP-11)</strong>! We hope you enjoyed the creative journey with our tools as much as we enjoyed building them.</p>
     <p>We’re excited to share the generated files with you—simply unzip the attached package and upload the <code>.glb</code> file to <a href="https://glb.ee/"><strong>https://glb.ee/</strong></a> to view your assets in 3D.</p>
-    <p>We’d be thrilled if you could also support us by voting at <a href="https://uvents.nus.edu.sg/event/26th-steps/vote"><strong>https://uvents.nus.edu.sg/event/26th-steps/vote</strong></a>. (Please note that registration at <a href="https://uvents.nus.edu.sg/event/26th-steps/registration"><strong>https://uvents.nus.edu.sg/event/26th-steps/registration</strong></a> is required before voting.) Your support not only encourages our team but also helps us continue to push the boundaries of creative technology.</p>
+    <p><strong>We’d be thrilled if you could also support us by voting at <a href="https://uvents.nus.edu.sg/event/26th-steps/vote">https://uvents.nus.edu.sg/event/26th-steps/vote</strong></a>. (Please note that registration at <a href="https://uvents.nus.edu.sg/event/26th-steps/registration"><strong>https://uvents.nus.edu.sg/event/26th-steps/registration</strong></a> is required before voting.) Your support not only encourages our team but also helps us continue to push the boundaries of creative technology.</p>
     <p>Have a fantastic day ahead!</p>
     <p>Best regards,<br>
        Troy Tim, Ng Qi Ting, Li Tianze</p>
