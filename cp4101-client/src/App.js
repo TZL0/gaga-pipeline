@@ -503,7 +503,7 @@ function App() {
           </Button>
           <Button
             style={{ background: 'transparent', fontSize: '1.25rem' }}
-            onClick={() => window.open("https://github.com/TZL0/gaga-pipeline", "_blank", "noreferrer")}
+            onClick={() => window.open("https://roultitude.itch.io/my-little-helper", "_blank", "noreferrer")}
           >
             Game <IconItchIo style={{ width: '1.75rem', height: '1.75rem' }}/>
           </Button>
