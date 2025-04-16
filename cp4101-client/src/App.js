@@ -7,6 +7,8 @@ import { saveAs } from 'file-saver';
 import './App.css';
 import './styles/theme.css';
 import './styles/global.css';
+import { ReactComponent as IconGithub } from './icons/github-svgrepo-com.svg';
+import { ReactComponent as IconItchIo } from './icons/itch-dot-io-svgrepo-com.svg';
 
 import { DEFAULT_CFG_STRENGTH, DEFAULT_GUIDANCE_SCALE, DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_WIDTH, DEFAULT_INFERENCE_STEPS, DEFAULT_MESH_SIMPLIFY_RATIO, DEFAULT_SLAT_STEPS, DEFAULT_SPARSE_CFG_STRENGTH, DEFAULT_SPARSE_STEPS, DEFAULT_TEXTURE_SIZE } from './constants.js';
 
@@ -485,6 +487,27 @@ function App() {
         }}
       >
         <h1>Game Asset Generative AI Pipeline</h1>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            gap: '1rem',
+          }}
+        >
+          <Button
+            style={{ background: 'transparent', fontSize: '1.25rem' }}
+            onClick={() => window.open("https://github.com/TZL0/gaga-pipeline", "_blank", "noreferrer")}
+          >
+            Repository <IconGithub style={{ width: '1.75rem', height: '1.75rem' }}/>
+          </Button>
+          <Button
+            style={{ background: 'transparent', fontSize: '1.25rem' }}
+            onClick={() => window.open("https://github.com/TZL0/gaga-pipeline", "_blank", "noreferrer")}
+          >
+            Game <IconItchIo style={{ width: '1.5rem', height: '1.5rem' }}/>
+          </Button>
+        </div>
       </div>
       
       <ErrorPopup
