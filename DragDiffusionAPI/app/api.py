@@ -260,30 +260,37 @@ async def train_lora_endpoint(
             status_code=400,
             content={"error": "Failed to process original image.", "details": str(e)}
         )
-    task_id = str(uuid.uuid4())
-    tasks_train_lora[task_id] = {
-        "status": "PENDING",
-        "result": None,
-        "error": None,
-        "timestamp": time.time()
-    }
-    background_tasks.add_task(
-        process_train_lora,
-        task_id, original_img_np, prompt, path_model,
-        lora_step, lora_lr, lora_batch_size, lora_rank,
-    )
-    return {"task_id": task_id}
+
+    try:
+        task_id = str(uuid.uuid4())
+        tasks_train_lora[task_id] = {
+            "status": "PENDING",
+            "result": None,
+            "error": None,
+            "timestamp": time.time()
+        }
+        background_tasks.add_task(
+            process_train_lora,
+            task_id, original_img_np, prompt, path_model,
+            lora_step, lora_lr, lora_batch_size, lora_rank,
+        )
+        return {"task_id": task_id}
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 @app.get("/drag_diff_train_lora_status/{task_id}")
 async def train_lora_status(task_id: str):
-    if task_id not in tasks_train_lora:
-        raise JSONResponse(status_code=404, content={"error": "Task not found"})
-    task = tasks_train_lora[task_id]
-    if task["status"] in ["COMPLETE", "FAILED"]:
-        tasks_train_lora.pop(task_id)
+    try:
+        if task_id not in tasks_train_lora:
+            return JSONResponse(status_code=404, content={"error": "Task not found"})
+        task = tasks_train_lora[task_id]
+        if task["status"] in ["COMPLETE", "FAILED"]:
+            tasks_train_lora.pop(task_id)
+            return task
         return task
-    return task
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 @app.post("/drag_diff_image")
@@ -318,32 +325,40 @@ async def drag_image_endpoint(
             status_code=400,
             content={"error": "Failed to read LoRA file.", "details": str(e)}
         )
-    task_id = str(uuid.uuid4())
-    tasks_drag_image[task_id] = {
-        "status": "PENDING",
-        "result": None,
-        "error": None,
-        "timestamp": time.time()
-    }
-    background_tasks.add_task(
-        process_drag_image,
-        task_id, original_image_np, resized_image_np,
-        selected_points, mask, prompt,
-        inversion_strength, lam, latent_lr, n_pix_step,
-        path_model, start_step, start_layer, lora_file_content,
-    )
-    return {"task_id": task_id}
+
+    try:
+        task_id = str(uuid.uuid4())
+        tasks_drag_image[task_id] = {
+            "status": "PENDING",
+            "result": None,
+            "error": None,
+            "timestamp": time.time()
+        }
+        background_tasks.add_task(
+            process_drag_image,
+            task_id, original_image_np, resized_image_np,
+            selected_points, mask, prompt,
+            inversion_strength, lam, latent_lr, n_pix_step,
+            path_model, start_step, start_layer, lora_file_content,
+        )
+        return {"task_id": task_id}
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 @app.get("/drag_diff_image_status/{task_id}")
 async def drag_image_status(task_id: str):
-    if task_id not in tasks_drag_image:
-        raise JSONResponse(status_code=404, content={"error": "Task not found"})
-    task = tasks_drag_image[task_id]
-    if task["status"] in ["COMPLETE", "FAILED"]:
-        tasks_drag_image.pop(task_id)
+    try:
+        if task_id not in tasks_drag_image:
+            return JSONResponse(status_code=404, content={"error": "Task not found"})
+        task = tasks_drag_image[task_id]
+        if task["status"] in ["COMPLETE", "FAILED"]:
+            tasks_drag_image.pop(task_id)
+            return task
         return task
-    return task
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
 
 
 if __name__ == "__main__":
