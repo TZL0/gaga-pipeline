@@ -30,35 +30,55 @@ const EmailUploadPopUp = ({
   }, [isEmailUploadPopUpActive]);
 
   const fetchImages = async () => {
+    const startTime = Date.now();
     setIsFetching(true);
-    try {
-      const response = await fetch(getPullImageApi(), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),
-      });
-      if (!response.ok) {
-        const errData = await response.json();
-        setIsFetching(false);
-        throw new Error('Error fetching images: ' + errData.error);
-      }
-      const data = await response.json();
-      if (data.images && Array.isArray(data.images)) {
-        data.images.forEach((imgUrl) => {
-          addToImageGallery(imgUrl);
+  
+    while (Date.now() - startTime < 30000) {
+      try {
+        const response = await fetch(getPullImageApi(), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code }),
         });
-        setIsEmailUploadPopUpActive(false);
-        setCode('');
-      } else {
-        throw new Error('No images found for this code.');
+  
+        if (!response.ok) {
+          const errData = await response.json();
+          throw new Error('Error fetching images: ' + errData.error);
+        }
+  
+        const data = await response.json();
+        if (data.images && Array.isArray(data.images)) {
+          data.images.forEach((imgUrl) => {
+            addToImageGallery(imgUrl);
+          });
+          setIsEmailUploadPopUpActive(false);
+          setCode('');
+          setIsFetching(false);
+          return;
+        } else {
+          throw new Error('No images found for this code.');
+        }
+      } catch (error) {
+        if (error.message === 'No images found for this code.') {
+          setIsFetching(false);
+          setError(error.message);
+          throw error;
+        }
+  
+        if (Date.now() - startTime >= 30000) {
+          setIsFetching(false);
+          setError(error.message);
+          throw error;
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       }
-    } catch (error) {
-      setError(error.message);
     }
     setIsFetching(false);
   };
+  
 
   if (!isEmailUploadPopUpActive) return null;
 
