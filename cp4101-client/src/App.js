@@ -505,7 +505,7 @@ function App() {
             style={{ background: 'transparent', fontSize: '1.25rem' }}
             onClick={() => window.open("https://github.com/TZL0/gaga-pipeline", "_blank", "noreferrer")}
           >
-            Game <IconItchIo style={{ width: '1.5rem', height: '1.5rem' }}/>
+            Game <IconItchIo style={{ width: '1.75rem', height: '1.75rem' }}/>
           </Button>
         </div>
       </div>
