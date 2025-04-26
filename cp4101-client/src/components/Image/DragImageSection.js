@@ -1,4 +1,3 @@
-// src/components/DragImageSection.js
 import React, { useState } from 'react';
 import DragDiffusionPage from './DragDiffusionPage';
 import InstantDragPage from './InstantDragPage';

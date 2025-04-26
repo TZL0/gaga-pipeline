@@ -1,4 +1,3 @@
-// src/components/DragDiffusionPage.js
 import React, { useState, useRef, useEffect } from 'react';
 import { FiDownload, FiPlus, FiTrash, FiUpload } from 'react-icons/fi';
 import { Button, Select, Slider, TextField } from '../common';
