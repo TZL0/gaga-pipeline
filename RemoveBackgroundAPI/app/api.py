@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException, Body, BackgroundTasks
 import torch
 import io
@@ -8,6 +9,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 from torchvision import transforms
 from transformers import AutoModelForImageSegmentation
+from huggingface_hub import login
+
+HUGGINGFACE_HUB_TOKEN = os.environ.get("HUGGINGFACE_HUB_TOKEN")
+assert bool(HUGGINGFACE_HUB_TOKEN), "HUGGINGFACE_HUB_TOKEN environment variable is not set"
+
+login(token = os.environ.get("HUGGINGFACE_HUB_TOKEN"))
 
 assert torch.cuda.is_available(), "CUDA is not available"
 
@@ -22,7 +29,7 @@ app.add_middleware(
 )
 
 model = AutoModelForImageSegmentation.from_pretrained(
-    'briaai/RMBG-2.0', local_files_only=True, trust_remote_code=True
+    'briaai/RMBG-2.0', trust_remote_code=True
 )
 torch.set_float32_matmul_precision('high')
 model.to('cuda')

@@ -37,7 +37,6 @@ try:
         model_id_sdxl,
         unet=unet,
         torch_dtype=torch.float16,
-        local_files_only=True
     )
     pipe_lightning.scheduler = EulerDiscreteScheduler.from_config(
         pipe_lightning.scheduler.config, timestep_spacing="trailing"
