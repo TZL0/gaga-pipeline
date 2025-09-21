@@ -79,11 +79,13 @@ docker compose up -d
 
 ![Diffusion Samples](samples/gaga_generated_diffusion.png)
 
-<div align="center"><em>Figure 1: 3D models (middle and right) reconstructed from diffusion-generated images (left).</em></div>
+Figure 1: 3D models (middle and right) reconstructed from diffusion-generated images (left).
+
+
 
 ![Real Photo Samples](samples/gaga_generated_real.png)
 
-<div align="center"><em>Figure 2: 3D model (middle and right) of a snowman reconstructed from a photo taken with an iPhone (left).</em></div>
+Figure 2: 3D model (middle and right) of a snowman reconstructed from a photo taken with an iPhone (left).
 
 ---
 
