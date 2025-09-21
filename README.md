@@ -1,6 +1,8 @@
 
 # GAGA: Game Asset Generative AI Pipeline
 
+![App](samples/app.png)
+
 GAGA is an open-source, containerized web application that streamlines the creation of game-ready 3D assets from text prompts or images. Designed for educational use, it provides an accessible end-to-end workflow that combines automated generation with interactive user control.
 
 ## Key Features
@@ -41,7 +43,9 @@ HUGGINGFACE_HUB_TOKEN=hf_xxx   # Required for gated models
 
 ### Hugging Face Model Access
 
-If you use gated models (e.g., `briaai/RMBG-2.0`), request access on the Hugging Face model page and set your `HUGGINGFACE_HUB_TOKEN` in the `.env` file.
+If you use gated models, request access on the Hugging Face model page and set your `HUGGINGFACE_HUB_TOKEN` in the `.env` file.
+
+Note: The background removal service uses a gated model `briaai/RMBG-2.0`. If you require this feature, you will need to set your access token.
 
 ### Build and Start All Services
 
