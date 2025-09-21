@@ -1,0 +1,99 @@
+
+# GAGA: Game Asset Generative AI Pipeline
+
+GAGA is an open-source, containerized web application that streamlines the creation of game-ready 3D assets from text prompts or images. Designed for educational use, it provides an accessible end-to-end workflow that combines automated generation with interactive user control.
+
+## Key Features
+
+- **Text-to-3D Generation:** Convert natural language descriptions into fully textured 3D models.
+- **Interactive Point-Based Editing:** Fine-tune generated images before 3D reconstruction using intuitive drag-and-drop controls.
+- **PBR Material Generation:** Automatically create physically-based rendering maps (ORM) for realistic lighting in game engines.
+- **Engine Compatibility:** Export assets in FBX/OBJ formats compatible with Unity and Unreal Engine.
+- **Modular Architecture:** Containerized microservices for flexible deployment and easy component updates.
+- **Educational Focus:** Designed to lower technical barriers for students and educators in game development courses.
+
+GAGA addresses a critical gap in game development education by enabling rapid asset creation without extensive 3D modeling expertise, while ensuring all generated content is copyright-safe for academic and commercial use.
+
+---
+
+## Setup
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/)
+- [NVIDIA GPU drivers](https://www.nvidia.com/Download/index.aspx) and [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for GPU support
+- (Optional) [git](https://git-scm.com/) for cloning the repository
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/TZL0/gaga-pipeline.git
+cd gaga-pipeline
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following content (replace with your actual values):
+
+```env
+HUGGINGFACE_HUB_TOKEN=hf_xxx   # Required for gated models
+```
+
+### Hugging Face Model Access
+
+If you use gated models (e.g., `briaai/RMBG-2.0`), request access on the Hugging Face model page and set your `HUGGINGFACE_HUB_TOKEN` in the `.env` file.
+
+### Build and Start All Services
+
+```bash
+docker compose up --build
+```
+
+To start in detached mode:
+
+```bash
+docker compose up -d
+```
+
+### Service Endpoints
+
+- **GenImageAPI:** http://localhost:8000
+- **DragDiffusionAPI:** http://localhost:8010
+- **RemoveBackgroundAPI:** http://localhost:8011
+- **Gen3DAPI:** http://localhost:8001
+- **PostProcessAPI:** http://localhost:8002
+- **PostalAPI:** http://localhost:8099
+- **Client:** http://localhost:3000
+
+### Notes
+
+- Model files are cached in the `huggingface-cache` directory and mounted into each container.
+- For GPU support, ensure your host system and Docker are properly configured for NVIDIA GPUs.
+- If you encounter authentication errors with Hugging Face, verify your token and model access.
+
+---
+
+## Showcase
+
+### Generated Assets
+
+![Diffusion Samples](samples/gaga_generated_diffusion.png)
+
+<div align="center"><em>Figure 1: 3D models (middle and right) reconstructed from diffusion-generated images (left).</em></div>
+
+![Real Photo Samples](samples/gaga_generated_real.png)
+
+<div align="center"><em>Figure 2: 3D model (middle and right) of a snowman reconstructed from a photo taken with an iPhone (left).</em></div>
+
+---
+
+### Proof-of-Concept Game
+
+We developed a complete Unity game using only AI-generated assets from GAGA to validate the pipeline's production readiness.
+
+[Play the game here.](https://roultitude.itch.io/my-little-helper)
+
+![Game Screenshot 1](samples/game_screenshot_1.jpg)
+
+![Game Screenshot 2](samples/game_screenshot_2.jpg)
+
