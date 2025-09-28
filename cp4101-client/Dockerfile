@@ -22,8 +22,6 @@ ENV REACT_APP_DRAG_DIFF_IMAGE=/drag_diff_image
 ENV REACT_APP_DRAG_DIFF_IMAGE_STATUS=/drag_diff_image_status
 ENV REACT_APP_BACKGROUND_REMOVAL=/remove_background
 ENV REACT_APP_BACKGROUND_REMOVAL_STATUS=/remove_background_status
-ENV REACT_APP_PULL_IMAGES=/pull_images
-ENV REACT_APP_SEND_FILE=/send_file
 
 RUN yarn build
 
