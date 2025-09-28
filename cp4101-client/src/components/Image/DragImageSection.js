@@ -2,7 +2,14 @@ import { useState } from 'react';
 import DragDiffusionPage from './DragDiffusionPage';
 import InstantDragPage from './InstantDragPage';
 
-const DragImageSection = ({ taskStatusPoller, imageUrl, setImageUrl, imageGallery, setImageGallery, setError }) => {
+const DragImageSection = ({
+  taskStatusPoller,
+  imageUrl,
+  setImageUrl,
+  imageGallery,
+  setImageGallery,
+  setError
+}) => {
   const [selectedApproach, setSelectedApproach] = useState('');
 
   const handleApproachChange = (event) => {
