@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DragDiffusionPage from './DragDiffusionPage';
 import InstantDragPage from './InstantDragPage';
 

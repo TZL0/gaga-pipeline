@@ -30,7 +30,6 @@ const DragEditingSection = ({
           taskStatusPoller={taskStatusPoller}
           imageUrl={imageUrl}
           setImageUrl={setImageUrl} 
-          imageGallery={imageGallery} 
           setImageGallery={setImageGallery}
           trainedLoraMapping={trainedLoraMapping}
           setTrainedLoraMapping={setTrainedLoraMapping}

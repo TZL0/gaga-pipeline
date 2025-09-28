@@ -1,5 +1,4 @@
 // src/components/ErrorPopup.js
-import React from 'react';
 import { PopUp } from './common';
 
 const ErrorPopup = ({ error, clearError }) => {
