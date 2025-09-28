@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ReactCrop from 'react-image-crop';
 import { FiPlus, FiRotateCcw, FiRotateCw, FiX } from 'react-icons/fi';
 import { Button, Slider } from '../common';

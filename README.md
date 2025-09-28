@@ -66,7 +66,6 @@ docker compose up -d
 - **RemoveBackgroundAPI:** http://localhost:8011
 - **Gen3DAPI:** http://localhost:8001
 - **PostProcessAPI:** http://localhost:8002
-- **PostalAPI:** http://localhost:8099
 - **Client:** http://localhost:3000
 
 ### Notes

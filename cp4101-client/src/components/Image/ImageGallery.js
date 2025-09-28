@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FiDownload, FiMoreVertical, FiTrash } from 'react-icons/fi';
 import { Button, IconButton } from '../common';
 

@@ -1,6 +1,6 @@
 // src/App.js
-import React, { useState, useEffect, useRef } from 'react';
-import { FiBox, FiImage, FiMail, FiUpload } from 'react-icons/fi';
+import { useState, useEffect, useRef } from 'react';
+import { FiBox, FiImage, FiUpload } from 'react-icons/fi';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
@@ -21,16 +21,12 @@ import ModelGallery from './components/Model/ModelGallery.js';
 import ModelGenerationPopUp from './components/Model/ModelGenerationPopUp.js';
 import ModelMainSection from './components/Model/ModelMainSection.js';
 import ErrorPopup from './components/ErrorPopup';
-import EmailUploadPopUp from './components/Image/EmailUploadPopUp.js';
-import SendFilePopUp from './components/Model/SendFilePopUp.js';
 import SuccessPopup from './components/SuccessPopup.js';
 
 function App() {
   const fileInputRef = useRef(null);
   const [isImageGenerationPopUpActive, setIsImageGenerationPopUpActive] = useState(false);
   const [isModelGenerationPopUpActive, setIsModelGenerationPopUpActive] = useState(false);
-  const [isEmailUploadPopUpActive, setIsEmailUploadPopUpActive] = useState(false);
-  const [isSendFilePopUpActive, setIsSendFilePopUpActive] = useState(false);
   const [currentTab, setCurrentTab] = useState('image');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -153,14 +149,6 @@ function App() {
 
   const get_post_processing_api = () => {
     return process.env.REACT_APP_POST_PROCESSING || 'http://127.0.0.1:8002/process_file';
-  };
-
-  const get_pull_images_api = () => {
-    return process.env.REACT_APP_PULL_IMAGES || 'http://127.0.0.1:8099/pull_images';
-  };
-
-  const get_send_file_api = () => {
-    return process.env.REACT_APP_SEND_FILE || 'http://127.0.0.1:8099/send_file';
   };
 
   const pollTaskStatus = (taskId, task_status_api, startTime) => {
@@ -518,21 +506,9 @@ function App() {
         success={success}
         clearSuccess={() => setSuccess('')}
       />
-      <EmailUploadPopUp
-        isEmailUploadPopUpActive={isEmailUploadPopUpActive}
-        setIsEmailUploadPopUpActive={setIsEmailUploadPopUpActive}
-        addToImageGallery={addToImageGallery}
-        setImageUrl={setImageUrl}
-        setImageGallery={setImageGallery}
-        setLoading={setLoading}
-        setError={setError}
-        getPullImageApi={get_pull_images_api}
-      />
       <ImageGenerationPopUp
         isImageGenerationPopUpActive={isImageGenerationPopUpActive}
         setIsImageGenerationPopUpActive={setIsImageGenerationPopUpActive}
-        isEmailUploadPopUpActive={isEmailUploadPopUpActive}
-        setIsEmailUploadPopUpActive={setIsEmailUploadPopUpActive}
         generateModelName={generateModelName}
         setGenerateModelName={setGenerateModelName}
         prompt={prompt}
@@ -576,16 +552,6 @@ function App() {
         imageGallery={imageGallery}
         setImageGallery={setImageGallery}
         selectedImageUrl={imageUrl}
-      />
-
-      <SendFilePopUp
-        isSendFilePopUpActive={isSendFilePopUpActive}
-        setIsSendFilePopUpActive={setIsSendFilePopUpActive}
-        model={model}
-        packModelFiles={packModelFiles}
-        getSendFileApi={get_send_file_api}
-        setError={setError}
-        setSuccess={setSuccess}
       />
   
       <div
@@ -634,12 +600,6 @@ function App() {
                   onChange={handleImageUpload(fileInputRef)}
                   style={{ display: 'none' }}
                 />
-                <Button
-                  onClick={() => setIsEmailUploadPopUpActive(true)}
-                  disabled={loading || loading3D}
-                >
-                  <FiMail/>
-                </Button>
                 <Button
                   onClick={() => fileInputRef.current?.click()}
                   disabled={loading || loading3D}
@@ -815,7 +775,6 @@ function App() {
                 <ModelMainSection
                   model={model}
                   handleDownloadModel={handleDownloadModel}
-                  setSendFilePopUpActive={setIsSendFilePopUpActive}
                 />
               )}
             </div>

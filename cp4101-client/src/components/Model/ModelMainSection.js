@@ -1,11 +1,10 @@
 import { useRef } from "react";
-import { FiDownload, FiRefreshCw, FiSend } from "react-icons/fi";
+import { FiDownload, FiRefreshCw } from "react-icons/fi";
 import { Button } from '../common';
 
 const ModelMainSection = ({
   model,
   handleDownloadModel,
-  setSendFilePopUpActive,
 }) => {
   const modelViewRef = useRef(null);
 
@@ -57,11 +56,6 @@ const ModelMainSection = ({
             >
               Reset View
               <FiRefreshCw/>
-            </Button>
-            <Button
-              onClick={() => setSendFilePopUpActive(true)}
-            >
-              Share Model <FiSend/>
             </Button>
           </div>
         </div>

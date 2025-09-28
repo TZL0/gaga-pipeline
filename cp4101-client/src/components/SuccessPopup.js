@@ -1,5 +1,4 @@
 // src/components/SuccessPopup.js
-import React from 'react';
 import { PopUp } from './common';
 import { FiSmile } from 'react-icons/fi';
 

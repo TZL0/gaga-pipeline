@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FiDownload, FiPlus, FiTrash, FiUpload } from 'react-icons/fi';
 import { Button, Select, Slider, TextField } from '../common';
 
@@ -6,7 +6,6 @@ const DragDiffusionPage = ({
   taskStatusPoller,
   imageUrl,
   setImageUrl,
-  imageGallery,
   setImageGallery,
   trainedLoraMapping,
   setTrainedLoraMapping,
