@@ -1,9 +1,25 @@
-
 # GAGA: Game Asset Generative AI Pipeline
+
+Official implementation of:
+
+**GAGA: Game Asset Generative AI Pipeline**  
+*Presented at IEEE TALE 2025*
+
+[[Paper]](https://ieeexplore.ieee.org/abstract/document/11346631)
 
 ![App](samples/app.png)
 
-GAGA is an open-source, containerized web application that streamlines the creation of game-ready 3D assets from text prompts or images. Designed for educational use, it provides an accessible end-to-end workflow that combines automated generation with interactive user control.
+---
+
+## Overview
+
+GAGA is an open-source, containerized web application for generating game-ready 3D assets from text prompts or images.
+
+Designed for educational and research use, it provides an end-to-end workflow that combines automated asset generation with interactive user control, enabling rapid creation of production-ready 3D content without requiring extensive modeling expertise.
+
+The pipeline addresses a key accessibility challenge in game development education by lowering technical barriers to 3D asset creation while ensuring generated content is suitable for academic and commercial workflows.
+
+---
 
 ## Key Features
 
@@ -102,3 +118,25 @@ We developed a complete Unity game using only AI-generated assets from GAGA to v
 
 ![Game Screenshot 2](samples/game_screenshot_2.jpg)
 
+
+---
+
+## Citation
+
+If you use this work in research or teaching, please cite:
+
+**Paper:** [GAGA: Game Asset Generative AI Pipeline](https://ieeexplore.ieee.org/abstract/document/11346631)
+
+```bibtex
+@inproceedings{11346631,
+  author={Li, Tianze and Tim, Troy and Sun, Ruoxin and Ng, Qi Ting and Bhojan, Anand},
+  booktitle={2025 IEEE International Conference on Teaching, Assessment, and Learning for Engineering (TALE)}, 
+  title={GAGA: Game Asset Generative AI Pipeline}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Surveys;Visualization;Three-dimensional displays;Generative AI;Pipelines;Text to image;Games;Reflection;Virtual prototyping;Image reconstruction;Computer graphics;Computer science education;Diffusion models;Educational technology;Generative AI;Image reconstruction;Image synthesis;Text to image;Virtual prototyping},
+  doi={10.1109/TALE66047.2025.11346631}
+}
+```
