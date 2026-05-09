@@ -1,7 +1,9 @@
 # GAGA: Game Asset Generative AI Pipeline
 
-Official implementation of the paper
-**“GAGA: Game Asset Generative AI Pipeline”**
+Official implementation of:
+
+**GAGA: Game Asset Generative AI Pipeline**  
+*Presented at IEEE TALE 2025*
 
 [[Paper]](https://ieeexplore.ieee.org/abstract/document/11346631)
 
