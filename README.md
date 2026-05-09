@@ -1,9 +1,23 @@
-
 # GAGA: Game Asset Generative AI Pipeline
+
+Official implementation of the paper
+**“GAGA: Game Asset Generative AI Pipeline”**
+
+[[Paper]](https://ieeexplore.ieee.org/abstract/document/11346631)
 
 ![App](samples/app.png)
 
-GAGA is an open-source, containerized web application that streamlines the creation of game-ready 3D assets from text prompts or images. Designed for educational use, it provides an accessible end-to-end workflow that combines automated generation with interactive user control.
+---
+
+## Overview
+
+GAGA is an open-source, containerized web application for generating game-ready 3D assets from text prompts or images.
+
+Designed for educational and research use, it provides an end-to-end workflow that combines automated asset generation with interactive user control, enabling rapid creation of production-ready 3D content without requiring extensive modeling expertise.
+
+The pipeline addresses a key accessibility challenge in game development education by lowering technical barriers to 3D asset creation while ensuring generated content is suitable for academic and commercial workflows.
+
+---
 
 ## Key Features
 
