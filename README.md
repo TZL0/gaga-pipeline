@@ -118,3 +118,25 @@ We developed a complete Unity game using only AI-generated assets from GAGA to v
 
 ![Game Screenshot 2](samples/game_screenshot_2.jpg)
 
+
+---
+
+## Citation
+
+If you use this work in research or teaching, please cite:
+
+**Paper:** [GAGA: Game Asset Generative AI Pipeline](https://ieeexplore.ieee.org/abstract/document/11346631)
+
+```bibtex
+@inproceedings{11346631,
+  author={Li, Tianze and Tim, Troy and Sun, Ruoxin and Ng, Qi Ting and Bhojan, Anand},
+  booktitle={2025 IEEE International Conference on Teaching, Assessment, and Learning for Engineering (TALE)}, 
+  title={GAGA: Game Asset Generative AI Pipeline}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Surveys;Visualization;Three-dimensional displays;Generative AI;Pipelines;Text to image;Games;Reflection;Virtual prototyping;Image reconstruction;Computer graphics;Computer science education;Diffusion models;Educational technology;Generative AI;Image reconstruction;Image synthesis;Text to image;Virtual prototyping},
+  doi={10.1109/TALE66047.2025.11346631}
+}
+```
